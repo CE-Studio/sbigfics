@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=9 format=3 uid="uid://qwullnw4gjve"]
 
 [ext_resource type="Texture2D" uid="uid://d4jbg1olmp4tw" path="res://assets/laptop.svg" id="1_uajqw"]
 
@@ -80,3 +80,6 @@ transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 
 mesh = SubResource("ArrayMesh_1x32y")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_41uai")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -1.70368, 1.50988, -3.67874)
