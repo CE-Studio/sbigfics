@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6pibdssjb5sh"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_unbk2"]
+size = Vector2(1024, 804)
+
+[node name="laptop_internals" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+projection = 1
+size = 10.24
+frustum_offset = Vector2(1.185, 0.595)
+near = 0.351
+
+[node name="desktop" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -402.0
+offset_right = 512.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="screentree" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
+
+[node name="Sprite3D" type="Sprite3D" parent="screentree"]
+texture = SubResource("PlaceholderTexture2D_unbk2")
