@@ -1,6 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=17 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
+[ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
+[ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_h1k1j"]
+sky_material = SubResource("ProceduralSkyMaterial_7hcn0")
+
+[sub_resource type="Environment" id="Environment_v4fp0"]
+background_mode = 2
+sky = SubResource("Sky_h1k1j")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uokkb"]
 
@@ -62,10 +77,34 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j7053")
 
+[sub_resource type="Gradient" id="Gradient_50akn"]
+colors = PackedColorArray(0.921828, 0.858808, 0.772824, 1, 0.854902, 0.752941, 0.615686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_guwyf"]
+gradient = SubResource("Gradient_50akn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskbj"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_guwyf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mfy8l"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(5.815, 0.15, 2.24)
+subdivide_width = 2
+subdivide_depth = 2
+
 [node name="Node3D" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v4fp0")
+
 [node name="laptop" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-0.990304, 0, -0.138914, 0, 1, 0, 0.138914, 0, -0.990304, 0.101111, 0, -0.300522)
 
 [node name="Cube" type="MeshInstance3D" parent="laptop"]
 mesh = SubResource("ArrayMesh_j2p3y")
@@ -79,4 +118,12 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("1_lpgby")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -1.70368, 1.50988, -3.67874)
+transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -2.39188, 1.50988, -3.32205)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, -0.531788, 0.787321, -1.92623)
+texture = ExtResource("2_rcraw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.411351)
+mesh = SubResource("BoxMesh_mfy8l")
