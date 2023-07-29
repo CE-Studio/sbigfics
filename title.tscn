@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
 [ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
-[ext_resource type="Shader" uid="uid://1xjilaspysh5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
+[ext_resource type="Shader" uid="uid://mp3wi7n4yrd5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
 [ext_resource type="Texture2D" uid="uid://cdcsm82oycmjv" path="res://assets/Button1.png" id="5_1c584"]
 [ext_resource type="Texture2D" uid="uid://bl13842phmc1n" path="res://assets/Button2.png" id="6_68c3w"]
 [ext_resource type="Texture2D" uid="uid://648ktkqjvyhd" path="res://assets/Button3.png" id="7_wa2px"]
