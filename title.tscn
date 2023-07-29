@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://qwullnw4gjve"]
+[gd_scene load_steps=8 format=3 uid="uid://ctwboxocf20p8"]
 
-[ext_resource type="Texture2D" uid="uid://d4jbg1olmp4tw" path="res://assets/laptop.svg" id="1_uajqw"]
+[ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uokkb"]
 
@@ -31,9 +31,6 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_smjsg")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41uai"]
-albedo_texture = ExtResource("1_uajqw")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwu2d"]
 
@@ -73,13 +70,13 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 [node name="Cube" type="MeshInstance3D" parent="laptop"]
 mesh = SubResource("ArrayMesh_j2p3y")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_41uai")
+surface_material_override/0 = ExtResource("1_lpgby")
 
 [node name="Cube_001" type="MeshInstance3D" parent="laptop"]
 transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0)
 mesh = SubResource("ArrayMesh_1x32y")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_41uai")
+surface_material_override/0 = ExtResource("1_lpgby")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -1.70368, 1.50988, -3.67874)
