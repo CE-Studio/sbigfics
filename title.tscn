@@ -1,6 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=43 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
+[ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
 [ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
 [ext_resource type="Script" path="res://simpleSpriteAnim.gd" id="3_jdnd3"]
@@ -107,6 +108,13 @@ size = Vector3(5.815, 0.15, 2.24)
 subdivide_width = 2
 subdivide_depth = 2
 
+[sub_resource type="BoxMesh" id="BoxMesh_vigh1"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(17.345, 15.54, 0.63)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vvuo4"]
 render_priority = 0
 shader = ExtResource("1_uodwl")
@@ -165,9 +173,10 @@ shader_parameter/Tex2 = ExtResource("6_68c3w")
 shader_parameter/Tex3 = ExtResource("5_1c584")
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_pdbem")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(-0.926825, 0.325187, -0.187746, 1.47562e-08, 0.499998, 0.866026, 0.375493, 0.802655, -0.463411, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -199,6 +208,14 @@ script = ExtResource("3_jdnd3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.411351)
 mesh = SubResource("BoxMesh_mfy8l")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, 1.10104)
+mesh = SubResource("BoxMesh_vigh1")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4.48843, -0.300029, 1.10104)
+mesh = SubResource("BoxMesh_vigh1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.21959, 0, -0.0968509, 0, 0.24, 0, 0.0968509, 0, -0.21959, -1.237, -0.165, -0.588)
@@ -274,3 +291,7 @@ scale = Vector2(0.33, 0.33)
 texture = ExtResource("13_m1mnh")
 script = ExtResource("15_7e7si")
 frames = Array[Texture2D]([ExtResource("13_m1mnh"), ExtResource("16_f4o7e")])
+
+[connection signal="pressed" from="Control/VBoxContainer/TextureButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TextureButton2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TextureButton3" to="." method="_on_credits_pressed"]
