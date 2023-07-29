@@ -1,8 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=24 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
 [ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
+[ext_resource type="Shader" uid="uid://1xjilaspysh5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
+[ext_resource type="Texture2D" uid="uid://cdcsm82oycmjv" path="res://assets/Button1.png" id="5_1c584"]
+[ext_resource type="Texture2D" uid="uid://bl13842phmc1n" path="res://assets/Button2.png" id="6_68c3w"]
+[ext_resource type="Texture2D" uid="uid://648ktkqjvyhd" path="res://assets/Button3.png" id="7_wa2px"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -94,6 +98,24 @@ size = Vector3(5.815, 0.15, 2.24)
 subdivide_width = 2
 subdivide_depth = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6uiht"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("5_1c584")
+shader_parameter/Tex2 = ExtResource("6_68c3w")
+shader_parameter/Tex3 = ExtResource("7_wa2px")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0gx3l"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("6_68c3w")
+shader_parameter/Tex2 = ExtResource("7_wa2px")
+shader_parameter/Tex3 = ExtResource("5_1c584")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_laqks"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("7_wa2px")
+shader_parameter/Tex2 = ExtResource("6_68c3w")
+shader_parameter/Tex3 = ExtResource("5_1c584")
+
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -127,3 +149,43 @@ texture = ExtResource("2_rcraw")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.411351)
 mesh = SubResource("BoxMesh_mfy8l")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -317.0
+offset_top = -474.0
+offset_right = 195.0
+offset_bottom = 302.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+
+[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer"]
+material = SubResource("ShaderMaterial_6uiht")
+layout_mode = 2
+texture_normal = ExtResource("5_1c584")
+
+[node name="TextureButton2" type="TextureButton" parent="Control/VBoxContainer"]
+material = SubResource("ShaderMaterial_0gx3l")
+layout_mode = 2
+texture_normal = ExtResource("5_1c584")
+
+[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer"]
+material = SubResource("ShaderMaterial_laqks")
+layout_mode = 2
+texture_normal = ExtResource("5_1c584")
