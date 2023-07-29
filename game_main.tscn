@@ -1,9 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=28 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
+[ext_resource type="Texture2D" uid="uid://qrclwkj7gm41" path="res://assets/PsiArm.png" id="3_630ma"]
 [ext_resource type="Texture2D" uid="uid://c651pynn2j5jj" path="res://assets/TextSprites/Score.png" id="3_n0drv"]
 [ext_resource type="PackedScene" uid="uid://b2p12h3jb5gm8" path="res://assets/score/snumber.tscn" id="4_orngd"]
+[ext_resource type="Script" path="res://simpleSpriteAnim.gd" id="4_tw1lo"]
 [ext_resource type="Script" path="res://assets/score/score.gd" id="4_wmwgu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2tu6"]
@@ -154,6 +156,9 @@ animations = [{
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, -6.01766e-08, 1.96829e-07, 0, 0.956305, 0.292372, -2.05822e-07, -0.292372, 0.956305, 0.0235617, 0.966196, 1.88636)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4e7ou")
 
@@ -178,6 +183,12 @@ skeleton = NodePath("")
 mesh = SubResource("ArrayMesh_if84k")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_aabjv")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.34, -2.046e-08, 6.69218e-08, 0, 0.325144, 0.0994064, -6.99796e-08, -0.0994064, 0.325144, 0.305, -0.275, 1.28)
+texture = ExtResource("3_630ma")
+hframes = 2
+script = ExtResource("4_tw1lo")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -230,6 +241,3 @@ script = ExtResource("4_wmwgu")
 
 [node name="snumber" parent="HBoxContainer/HBoxContainer" instance=ExtResource("4_orngd")]
 layout_mode = 2
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -6.01766e-08, 1.96829e-07, 0, 0.956305, 0.292372, -2.05822e-07, -0.292372, 0.956305, 0.0235617, 0.966196, 1.88636)
