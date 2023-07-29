@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oblslppwn8j4"
-path.s3tc="res://.godot/imported/cardboardPhysicsObject.png-70c55dcf507308c0c91505f273456ffc.s3tc.ctex"
+uid="uid://hq50o821bmea"
+path.s3tc="res://.godot/imported/FigureTexture.png-78bcc61cd2f5acf27159b2a1e7d43409.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/cardboardPhysicsObject.png"
-dest_files=["res://.godot/imported/cardboardPhysicsObject.png-70c55dcf507308c0c91505f273456ffc.s3tc.ctex"]
+source_file="res://assets/FigureTexture.png"
+dest_files=["res://.godot/imported/FigureTexture.png-78bcc61cd2f5acf27159b2a1e7d43409.s3tc.ctex"]
 
 [params]
 

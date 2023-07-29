@@ -1,12 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=38 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
 [ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
-[ext_resource type="Shader" uid="uid://mp3wi7n4yrd5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
+[ext_resource type="Shader" uid="uid://1xjilaspysh5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
+[ext_resource type="ArrayMesh" uid="uid://df6pd66gwaolh" path="res://assets/mouse.obj" id="4_5112e"]
 [ext_resource type="Texture2D" uid="uid://cdcsm82oycmjv" path="res://assets/Button1.png" id="5_1c584"]
+[ext_resource type="Texture2D" uid="uid://oblslppwn8j4" path="res://assets/cardboardPhysicsObject.png" id="5_4eqnm"]
 [ext_resource type="Texture2D" uid="uid://bl13842phmc1n" path="res://assets/Button2.png" id="6_68c3w"]
+[ext_resource type="ArrayMesh" uid="uid://rvuyv4a23kxb" path="res://assets/Q.U.B.E.obj" id="6_agech"]
+[ext_resource type="ArrayMesh" uid="uid://crd6yqv2ww2g" path="res://assets/Figure.obj" id="7_hm6bu"]
 [ext_resource type="Texture2D" uid="uid://648ktkqjvyhd" path="res://assets/Button3.png" id="7_wa2px"]
+[ext_resource type="Texture2D" uid="uid://hq50o821bmea" path="res://assets/FigureTexture.png" id="8_1cll5"]
+[ext_resource type="Texture2D" uid="uid://djoxefg826ved" path="res://assets/Title.png" id="13_m1mnh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -98,6 +104,45 @@ size = Vector3(5.815, 0.15, 2.24)
 subdivide_width = 2
 subdivide_depth = 2
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vvuo4"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4t50r"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("5_4eqnm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lykfv"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6c83"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcvtp"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ug6ih"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ekib"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dufpk"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = ExtResource("8_1cll5")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6uiht"]
 shader = ExtResource("4_1v7oa")
 shader_parameter/Tex1 = ExtResource("5_1c584")
@@ -150,6 +195,26 @@ texture = ExtResource("2_rcraw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.411351)
 mesh = SubResource("BoxMesh_mfy8l")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.21959, 0, -0.0968509, 0, 0.24, 0, 0.0968509, 0, -0.21959, -1.237, -0.165, -0.588)
+mesh = ExtResource("4_5112e")
+surface_material_override/0 = SubResource("ShaderMaterial_vvuo4")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.416891, 0, -0.68279, 0, 0.8, 0, 0.68279, 0, 0.416891, -2.36924, -0.0633265, -0.0961859)
+material_override = SubResource("ShaderMaterial_4t50r")
+mesh = ExtResource("6_agech")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.511593, 0, 0.859228, 0, 1, 0, -0.859228, 0, 0.511593, 1.5093, -0.145746, -0.224175)
+mesh = ExtResource("7_hm6bu")
+surface_material_override/0 = SubResource("ShaderMaterial_lykfv")
+surface_material_override/1 = SubResource("ShaderMaterial_k6c83")
+surface_material_override/2 = SubResource("ShaderMaterial_gcvtp")
+surface_material_override/3 = SubResource("ShaderMaterial_ug6ih")
+surface_material_override/4 = SubResource("ShaderMaterial_8ekib")
+surface_material_override/5 = SubResource("ShaderMaterial_dufpk")
+
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -189,3 +254,16 @@ texture_normal = ExtResource("5_1c584")
 material = SubResource("ShaderMaterial_laqks")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -843.0
+offset_top = 5.0
+offset_right = 1677.0
+offset_bottom = 517.0
+grow_horizontal = 0
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("13_m1mnh")
