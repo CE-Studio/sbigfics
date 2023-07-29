@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=55 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -16,7 +16,16 @@
 [ext_resource type="Texture2D" uid="uid://hq50o821bmea" path="res://assets/FigureTexture.png" id="8_1cll5"]
 [ext_resource type="Texture2D" uid="uid://djoxefg826ved" path="res://assets/Title.png" id="13_m1mnh"]
 [ext_resource type="Script" path="res://simpleRetexture.gd" id="15_7e7si"]
+[ext_resource type="Texture2D" uid="uid://dscqwbnmpbic1" path="res://assets/TextSprites/Play1.png" id="15_g1ig0"]
+[ext_resource type="Texture2D" uid="uid://m03gxgjmsqx5" path="res://assets/TextSprites/Play2.png" id="16_445em"]
 [ext_resource type="Texture2D" path="res://assets/Title2.png" id="16_f4o7e"]
+[ext_resource type="Texture2D" uid="uid://bwfmqwohdclxj" path="res://assets/TextSprites/Play3.png" id="17_5vb2f"]
+[ext_resource type="Texture2D" uid="uid://8v322qagfrlm" path="res://assets/TextSprites/Options1.png" id="18_fcgv7"]
+[ext_resource type="Texture2D" uid="uid://ecwadr8nghnc" path="res://assets/TextSprites/Options2.png" id="19_uk8ru"]
+[ext_resource type="Texture2D" uid="uid://b75jvqi70opvd" path="res://assets/TextSprites/Options3.png" id="20_e42m3"]
+[ext_resource type="Texture2D" uid="uid://dxmb4cefmsou5" path="res://assets/TextSprites/Credits1.png" id="21_41gpk"]
+[ext_resource type="Texture2D" uid="uid://b7edpecwt846n" path="res://assets/TextSprites/Credits2.png" id="22_mkd72"]
+[ext_resource type="Texture2D" uid="uid://b3lim4byljv4n" path="res://assets/TextSprites/Credits3.png" id="23_vfodt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -160,17 +169,35 @@ shader_parameter/Tex1 = ExtResource("5_1c584")
 shader_parameter/Tex2 = ExtResource("6_68c3w")
 shader_parameter/Tex3 = ExtResource("7_wa2px")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pam3g"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("15_g1ig0")
+shader_parameter/Tex2 = ExtResource("16_445em")
+shader_parameter/Tex3 = ExtResource("17_5vb2f")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0gx3l"]
 shader = ExtResource("4_1v7oa")
 shader_parameter/Tex1 = ExtResource("6_68c3w")
 shader_parameter/Tex2 = ExtResource("7_wa2px")
 shader_parameter/Tex3 = ExtResource("5_1c584")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k5cgm"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("18_fcgv7")
+shader_parameter/Tex2 = ExtResource("19_uk8ru")
+shader_parameter/Tex3 = ExtResource("20_e42m3")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_laqks"]
 shader = ExtResource("4_1v7oa")
 shader_parameter/Tex1 = ExtResource("7_wa2px")
 shader_parameter/Tex2 = ExtResource("6_68c3w")
 shader_parameter/Tex3 = ExtResource("5_1c584")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4brn3"]
+shader = ExtResource("4_1v7oa")
+shader_parameter/Tex1 = ExtResource("21_41gpk")
+shader_parameter/Tex2 = ExtResource("22_mkd72")
+shader_parameter/Tex3 = ExtResource("23_vfodt")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_pdbem")
@@ -267,15 +294,36 @@ material = SubResource("ShaderMaterial_6uiht")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
 
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton"]
+material = SubResource("ShaderMaterial_pam3g")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("15_g1ig0")
+
 [node name="TextureButton2" type="TextureButton" parent="Control/VBoxContainer"]
 material = SubResource("ShaderMaterial_0gx3l")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
 
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton2"]
+material = SubResource("ShaderMaterial_k5cgm")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("18_fcgv7")
+
 [node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer"]
 material = SubResource("ShaderMaterial_laqks")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
+
+[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton3"]
+material = SubResource("ShaderMaterial_4brn3")
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("21_41gpk")
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 1
