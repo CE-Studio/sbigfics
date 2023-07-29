@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=41 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="1_uodwl"]
 [ext_resource type="Texture2D" uid="uid://bawcsmvyq68vm" path="res://assets/TitlePsi.png" id="2_rcraw"]
+[ext_resource type="Script" path="res://simpleSpriteAnim.gd" id="3_jdnd3"]
 [ext_resource type="Shader" uid="uid://1xjilaspysh5" path="res://assets/tripleframe.tres" id="4_1v7oa"]
 [ext_resource type="ArrayMesh" uid="uid://df6pd66gwaolh" path="res://assets/mouse.obj" id="4_5112e"]
 [ext_resource type="Texture2D" uid="uid://cdcsm82oycmjv" path="res://assets/Button1.png" id="5_1c584"]
@@ -13,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://648ktkqjvyhd" path="res://assets/Button3.png" id="7_wa2px"]
 [ext_resource type="Texture2D" uid="uid://hq50o821bmea" path="res://assets/FigureTexture.png" id="8_1cll5"]
 [ext_resource type="Texture2D" uid="uid://djoxefg826ved" path="res://assets/Title.png" id="13_m1mnh"]
+[ext_resource type="Script" path="res://simpleRetexture.gd" id="15_7e7si"]
+[ext_resource type="Texture2D" path="res://assets/Title2.png" id="16_f4o7e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -190,6 +193,8 @@ transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, 0.25563, 0.663833, -2.36366)
 texture = ExtResource("2_rcraw")
+vframes = 2
+script = ExtResource("3_jdnd3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.411351)
@@ -260,10 +265,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -843.0
+offset_left = -845.0
 offset_top = 5.0
-offset_right = 1677.0
+offset_right = 1675.0
 offset_bottom = 517.0
 grow_horizontal = 0
 scale = Vector2(0.33, 0.33)
 texture = ExtResource("13_m1mnh")
+script = ExtResource("15_7e7si")
+frames = Array[Texture2D]([ExtResource("13_m1mnh"), ExtResource("16_f4o7e")])
