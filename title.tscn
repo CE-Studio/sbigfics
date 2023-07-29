@@ -143,7 +143,7 @@ surface_material_override/0 = ExtResource("1_lpgby")
 transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -2.39188, 1.50988, -3.32205)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, -0.531788, 0.787321, -1.92623)
+transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, -0.226733, 0.787321, -2.08434)
 texture = ExtResource("2_rcraw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
