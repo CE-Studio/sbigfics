@@ -121,4 +121,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
 texture = SubResource("PlaceholderTexture2D_unbk2")
 
 [node name="TextureRect2" type="Sprite2D" parent="."]
+scale = Vector2(1.445, 1.445)
 texture = ExtResource("11_tfk6v")
+centered = false
