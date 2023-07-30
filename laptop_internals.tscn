@@ -1,4 +1,62 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6pibdssjb5sh"]
+[gd_scene load_steps=18 format=3 uid="uid://c6pibdssjb5sh"]
+
+[ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
+[ext_resource type="Texture2D" uid="uid://g2hvjbtta66l" path="res://assets/scrollsprites/up.svg" id="2_pkry7"]
+[ext_resource type="Texture2D" uid="uid://bb1kg7qq7bahx" path="res://assets/scrollsprites/uph.svg" id="3_mjbms"]
+[ext_resource type="Texture2D" uid="uid://dwjq2a6u5dhf4" path="res://assets/scrollsprites/upp.svg" id="4_i1rsf"]
+[ext_resource type="Texture2D" uid="uid://c041tt0rye80m" path="res://assets/scrollsprites/down.svg" id="5_lku3l"]
+[ext_resource type="Texture2D" uid="uid://mj0q73whe7y" path="res://assets/scrollsprites/downh.svg" id="6_x3o8v"]
+[ext_resource type="Texture2D" uid="uid://b5ldvjn46qreu" path="res://assets/scrollsprites/downp.svg" id="7_5lvto"]
+[ext_resource type="Texture2D" uid="uid://bf1f7ep8mckcx" path="res://assets/scrollsprites/grab.svg" id="8_0akbg"]
+[ext_resource type="Texture2D" uid="uid://cqpc7htpa4tt6" path="res://assets/scrollsprites/grabh.svg" id="9_vb0q7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
+bg_color = Color(0.972549, 0.952941, 0.937255, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jhbn"]
+texture = ExtResource("8_0akbg")
+texture_margin_left = 10.0
+texture_margin_top = 12.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oyh4f"]
+texture = ExtResource("9_vb0q7")
+texture_margin_left = 10.0
+texture_margin_top = 12.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uutel"]
+texture = ExtResource("8_0akbg")
+texture_margin_left = 10.0
+texture_margin_top = 12.0
+texture_margin_right = 10.0
+texture_margin_bottom = 12.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+modulate_color = Color(0.709804, 0.709804, 0.709804, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3h4m3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iiess"]
+
+[sub_resource type="Theme" id="Theme_ja7hm"]
+VScrollBar/icons/decrement = ExtResource("2_pkry7")
+VScrollBar/icons/decrement_highlight = ExtResource("3_mjbms")
+VScrollBar/icons/decrement_pressed = ExtResource("4_i1rsf")
+VScrollBar/icons/increment = ExtResource("5_lku3l")
+VScrollBar/icons/increment_highlight = ExtResource("6_x3o8v")
+VScrollBar/icons/increment_pressed = ExtResource("7_5lvto")
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_5jhbn")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_oyh4f")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_uutel")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_3h4m3")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_iiess")
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_unbk2"]
 size = Vector2(1024, 804)
@@ -12,9 +70,7 @@ size = 10.24
 frustum_offset = Vector2(1.185, 0.595)
 near = 0.351
 
-[node name="desktop" type="Control" parent="."]
-visible = false
-layout_mode = 3
+[node name="desktop" type="Panel" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,6 +82,34 @@ offset_right = 512.0
 offset_bottom = 402.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_imai1")
+
+[node name="TextureRect" type="TextureRect" parent="desktop"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_w7f12")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="desktop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 135.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ja7hm")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="desktop/ScrollContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 3
 
 [node name="screentree" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
