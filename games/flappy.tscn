@@ -1,0 +1,278 @@
+[gd_scene load_steps=33 format=3 uid="uid://baxan3i5q7f0e"]
+
+[ext_resource type="Script" path="res://assets/gamesprites/flappy.gd" id="1_lf4nv"]
+[ext_resource type="Script" path="res://assets/gamescripts/flappypost.gd" id="2_ne63w"]
+[ext_resource type="Texture2D" uid="uid://cu03o10jlyhi4" path="res://assets/gamesprites/flappypost.svg" id="3_2w40p"]
+[ext_resource type="Texture2D" uid="uid://dfiprpkcll3v1" path="res://assets/gamesprites/flappybot.svg" id="4_wevgf"]
+[ext_resource type="Texture2D" uid="uid://cf8y1h4kbg5wh" path="res://assets/gamesprites/kobbbbbbb.png" id="5_d75x4"]
+[ext_resource type="AudioStream" uid="uid://ilosv1lbp0h8" path="res://assets/sound/deltarune-explosion.mp3" id="6_4yotp"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1cva"]
+size = Vector2(150, 804)
+
+[sub_resource type="GDScript" id="GDScript_nd322"]
+script/source = "extends RigidBody2D
+
+
+@onready var _s = $Sprite2D
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    if Input.get_action_strength(\"mclick\") > 0.9:
+        linear_velocity.y = -200
+        _s.frame = 1
+    else:
+        _s.frame = 0
+
+
+func _on_body_entered(body: Node) -> void:
+    print(\"ack\")
+    Game.score -= 100
+    $\"../AnimatedSprite2D\".position = position
+    $\"../AnimatedSprite2D\".play(\"default\")
+    $\"../AudioStreamPlayer\".play()
+    queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj34x"]
+size = Vector2(82, 60)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1x4oj"]
+distance = -398.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gmtf"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 2256, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88ngn"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 2538, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s2ci"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 2820, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inwun"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 3102, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jyols"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 3384, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvpig"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 3666, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enosr"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 3948, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4et8x"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 4230, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n30ce"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 4512, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj52u"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 0, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glmul"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 282, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ommhp"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 564, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ges52"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 846, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc2u2"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 1128, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bro3w"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 1410, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hh57"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 1692, 200, 282)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhtn4"]
+atlas = ExtResource("5_d75x4")
+region = Rect2(0, 1974, 200, 282)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h68sh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gmtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88ngn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4s2ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inwun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jyols")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvpig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enosr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4et8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n30ce")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oj52u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glmul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ommhp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ges52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc2u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bro3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hh57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhtn4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_5pfd8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hfpr4"]
+gradient = SubResource("Gradient_5pfd8")
+width = 102
+
+[sub_resource type="GDScript" id="GDScript_xeo1s"]
+script/source = "extends Sprite2D
+
+
+func _process(delta: float) -> void:
+    scale.x -= (delta / 2)
+    if scale.x <= 0:
+        $\"..\".endgame()
+"
+
+[node name="game" type="Camera2D"]
+script = ExtResource("1_lf4nv")
+
+[node name="Sprite3D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+
+[node name="post" type="AnimatableBody2D" parent="."]
+position = Vector2(594, 0)
+sync_to_physics = false
+script = ExtResource("2_ne63w")
+
+[node name="Sprite2D" type="Sprite2D" parent="post"]
+position = Vector2(0, 500)
+texture = ExtResource("3_2w40p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="post"]
+position = Vector2(0, -500)
+texture = ExtResource("3_2w40p")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="post"]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_u1cva")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="post"]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_u1cva")
+
+[node name="post2" type="AnimatableBody2D" parent="."]
+position = Vector2(1226, -99)
+sync_to_physics = false
+script = ExtResource("2_ne63w")
+
+[node name="Sprite2D" type="Sprite2D" parent="post2"]
+position = Vector2(0, 500)
+texture = ExtResource("3_2w40p")
+
+[node name="Sprite2D2" type="Sprite2D" parent="post2"]
+position = Vector2(0, -500)
+texture = ExtResource("3_2w40p")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="post2"]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_u1cva")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="post2"]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_u1cva")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2(-343, -278)
+continuous_cd = 2
+max_contacts_reported = 1
+contact_monitor = true
+lock_rotation = true
+script = SubResource("GDScript_nd322")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = ExtResource("4_wevgf")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_oj34x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-343, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_1x4oj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-942, -411)
+sprite_frames = SubResource("SpriteFrames_h68sh")
+frame = 16
+frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4yotp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-512, -402)
+scale = Vector2(10, 20)
+texture = SubResource("GradientTexture1D_hfpr4")
+centered = false
+script = SubResource("GDScript_xeo1s")
+
+[connection signal="body_entered" from="RigidBody2D" to="RigidBody2D" method="_on_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

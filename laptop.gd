@@ -4,6 +4,9 @@ class_name Laptop
 var _bbase:PackedScene = preload("res://assets/ip/ipbutton.tscn")
 @onready var grid:GridContainer = $desktop/ScrollContainer/GridContainer
 @onready var cur:Sprite2D = $TextureRect2
+@onready var content:Node3D = $screentree
+@onready var desk:Panel = $desktop
+static var instance:Laptop
 
 
 var counts := {}
@@ -11,6 +14,7 @@ var counts := {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    instance = self
     for i in DirAccess.get_files_at("res://assets/CharacterIcons/"):
         var j = i.split(".")
         if j[-1] == "png":
@@ -26,6 +30,9 @@ func _ready() -> void:
 
             grid.add_child(h)
 
+    desk.visible = false
+    content.add_child(load("res://games/flappy.tscn").instantiate())
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,3 +46,7 @@ func button(name:String):
 func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         cur.position = event.position
+
+func nextgame():
+    for i in content.get_children():
+        i.queue_free()

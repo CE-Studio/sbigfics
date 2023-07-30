@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhonpimb0pyma"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_olutj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_olutj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+double_sided = false
+texture = SubResource("PlaceholderTexture2D_x5nd2")
