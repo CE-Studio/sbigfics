@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdwwds4607tl6"
-path="res://.godot/imported/Icon_GMann.png-8118cae820acb8673aeb5d2827c4c949.ctex"
+uid="uid://bipku7f7oowl6"
+path="res://.godot/imported/Satan.png-74bfa117db13088b1591155571c6eabf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_GMann.png"
-dest_files=["res://.godot/imported/Icon_GMann.png-8118cae820acb8673aeb5d2827c4c949.ctex"]
+source_file="res://assets/CharacterIcons/Satan.png"
+dest_files=["res://.godot/imported/Satan.png-74bfa117db13088b1591155571c6eabf.ctex"]
 
 [params]
 

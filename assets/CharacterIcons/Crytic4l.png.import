@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blqjsgtd0obdn"
-path="res://.godot/imported/Icon_Multiplier.png-fa7a9e241ef2bde1a64a271d7d184d32.ctex"
+uid="uid://lh6sia8kjlax"
+path="res://.godot/imported/Crytic4l.png-f3c23d145904d46f35e629d10a7770bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_Multiplier.png"
-dest_files=["res://.godot/imported/Icon_Multiplier.png-fa7a9e241ef2bde1a64a271d7d184d32.ctex"]
+source_file="res://assets/CharacterIcons/Crytic4l.png"
+dest_files=["res://.godot/imported/Crytic4l.png-f3c23d145904d46f35e629d10a7770bb.ctex"]
 
 [params]
 

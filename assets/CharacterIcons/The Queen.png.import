@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1xwqb28mwysp"
-path="res://.godot/imported/Icon_Giotto.png-9105c50993138d6eeab02c8e9641cb2a.ctex"
+uid="uid://3ek6rak0klpb"
+path="res://.godot/imported/The Queen.png-5c5d6f9461f5585e7e588852c5f2084c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_Giotto.png"
-dest_files=["res://.godot/imported/Icon_Giotto.png-9105c50993138d6eeab02c8e9641cb2a.ctex"]
+source_file="res://assets/CharacterIcons/The Queen.png"
+dest_files=["res://.godot/imported/The Queen.png-5c5d6f9461f5585e7e588852c5f2084c.ctex"]
 
 [params]
 

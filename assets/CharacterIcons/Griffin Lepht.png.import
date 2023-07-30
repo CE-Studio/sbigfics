@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjyfv25um8bc7"
-path="res://.godot/imported/Icon_Kevin34.png-f56fe56b841cd6613aa27f177fdc5142.ctex"
+uid="uid://b0d7ufpeqwcga"
+path="res://.godot/imported/Griffin Lepht.png-b4645c10c1faf985ed48874a14dab6fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_Kevin34.png"
-dest_files=["res://.godot/imported/Icon_Kevin34.png-f56fe56b841cd6613aa27f177fdc5142.ctex"]
+source_file="res://assets/CharacterIcons/Griffin Lepht.png"
+dest_files=["res://.godot/imported/Griffin Lepht.png-b4645c10c1faf985ed48874a14dab6fc.ctex"]
 
 [params]
 

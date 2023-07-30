@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl0dvxngfdbd7"
-path="res://.godot/imported/Icon_Pico.png-0263166d5073b8ab37b93b2e78ac90fb.ctex"
+uid="uid://c0sw3xpabpqnu"
+path="res://.godot/imported/Old Guy from the Cave.png-79ee0e926a30f02f623176439e47c70b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_Pico.png"
-dest_files=["res://.godot/imported/Icon_Pico.png-0263166d5073b8ab37b93b2e78ac90fb.ctex"]
+source_file="res://assets/CharacterIcons/Old Guy from the Cave.png"
+dest_files=["res://.godot/imported/Old Guy from the Cave.png-79ee0e926a30f02f623176439e47c70b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbd6dylm2s50t"
-path="res://.godot/imported/Icon_NicolasCage.png-fb58bbf92d3f3ed6c814362f037f344c.ctex"
+uid="uid://dgvvwh13k5udw"
+path="res://.godot/imported/sans.png-05499e8164735eb55fca025fed0820a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_NicolasCage.png"
-dest_files=["res://.godot/imported/Icon_NicolasCage.png-fb58bbf92d3f3ed6c814362f037f344c.ctex"]
+source_file="res://assets/CharacterIcons/sans.png"
+dest_files=["res://.godot/imported/sans.png-05499e8164735eb55fca025fed0820a7.ctex"]
 
 [params]
 

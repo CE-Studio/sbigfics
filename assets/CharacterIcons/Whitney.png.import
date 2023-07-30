@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bby6j0c870apu"
-path="res://.godot/imported/Icon_CleverSnailPun.png-898d2c18543229819ff19eb9e983f71d.ctex"
+uid="uid://bq7wd7b6wk3nf"
+path="res://.godot/imported/Whitney.png-784d11940b5010dbc448fa2768a1103e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_CleverSnailPun.png"
-dest_files=["res://.godot/imported/Icon_CleverSnailPun.png-898d2c18543229819ff19eb9e983f71d.ctex"]
+source_file="res://assets/CharacterIcons/Whitney.png"
+dest_files=["res://.godot/imported/Whitney.png-784d11940b5010dbc448fa2768a1103e.ctex"]
 
 [params]
 

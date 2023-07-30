@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gufsyidxlc1d"
-path="res://.godot/imported/Icon_Stanley.png-ec1c42ff50f3bf613c9bea3186bf85e7.ctex"
+uid="uid://cpa28qtnpg4xj"
+path="res://.godot/imported/Ovi Kintobor.png-bd66ef3046de375c34cbc77ff248968e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/CharacterIcons/Icon_Stanley.png"
-dest_files=["res://.godot/imported/Icon_Stanley.png-ec1c42ff50f3bf613c9bea3186bf85e7.ctex"]
+source_file="res://assets/CharacterIcons/Ovi Kintobor.png"
+dest_files=["res://.godot/imported/Ovi Kintobor.png-bd66ef3046de375c34cbc77ff248968e.ctex"]
 
 [params]
 
