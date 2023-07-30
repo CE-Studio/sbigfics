@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c6pibdssjb5sh"]
+[gd_scene load_steps=19 format=3 uid="uid://c6pibdssjb5sh"]
 
 [ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
 [ext_resource type="Texture2D" uid="uid://g2hvjbtta66l" path="res://assets/scrollsprites/up.svg" id="2_pkry7"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ldvjn46qreu" path="res://assets/scrollsprites/downp.svg" id="7_5lvto"]
 [ext_resource type="Texture2D" uid="uid://bf1f7ep8mckcx" path="res://assets/scrollsprites/grab.svg" id="8_0akbg"]
 [ext_resource type="Texture2D" uid="uid://cqpc7htpa4tt6" path="res://assets/scrollsprites/grabh.svg" id="9_vb0q7"]
+[ext_resource type="Texture2D" uid="uid://ci0hyipvvuyko" path="res://assets/ip/CompButton1.png" id="10_2w3wi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
 bg_color = Color(0.972549, 0.952941, 0.937255, 1)
@@ -109,7 +110,39 @@ vertical_scroll_mode = 2
 custom_minimum_size = Vector2(1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
-columns = 3
+columns = 2
+
+[node name="TextureButton" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton2" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton3" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton4" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton5" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton6" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton7" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
+
+[node name="TextureButton8" type="TextureButton" parent="desktop/ScrollContainer/GridContainer"]
+layout_mode = 2
+texture_normal = ExtResource("10_2w3wi")
 
 [node name="screentree" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
