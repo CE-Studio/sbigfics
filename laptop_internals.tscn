@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6pibdssjb5sh"]
+[gd_scene load_steps=20 format=3 uid="uid://c6pibdssjb5sh"]
 
 [ext_resource type="Script" path="res://laptop.gd" id="1_044e4"]
 [ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ldvjn46qreu" path="res://assets/scrollsprites/downp.svg" id="7_5lvto"]
 [ext_resource type="Texture2D" uid="uid://bf1f7ep8mckcx" path="res://assets/scrollsprites/grab.svg" id="8_0akbg"]
 [ext_resource type="Texture2D" uid="uid://cqpc7htpa4tt6" path="res://assets/scrollsprites/grabh.svg" id="9_vb0q7"]
+[ext_resource type="Texture2D" uid="uid://cmpfnkr8cb1t6" path="res://assets/cur.svg" id="11_tfk6v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
 bg_color = Color(0.972549, 0.952941, 0.937255, 1)
@@ -118,3 +119,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
 
 [node name="Sprite3D" type="Sprite3D" parent="screentree"]
 texture = SubResource("PlaceholderTexture2D_unbk2")
+
+[node name="TextureRect2" type="Sprite2D" parent="."]
+texture = ExtResource("11_tfk6v")

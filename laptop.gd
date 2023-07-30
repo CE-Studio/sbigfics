@@ -3,6 +3,7 @@ class_name Laptop
 
 var _bbase:PackedScene = preload("res://assets/ip/ipbutton.tscn")
 @onready var grid:GridContainer = $desktop/ScrollContainer/GridContainer
+@onready var cur:Sprite2D = $TextureRect2
 
 
 var counts := {}
@@ -33,3 +34,8 @@ func _process(delta: float) -> void:
 
 func button(name:String):
     print(name)
+
+
+func _input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion:
+        cur.position = event.position
