@@ -171,10 +171,10 @@ animations = [{
 "speed": 30.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_5pfd8"]
+[sub_resource type="Gradient" id="Gradient_22c4a"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hfpr4"]
-gradient = SubResource("Gradient_5pfd8")
+gradient = SubResource("Gradient_22c4a")
 width = 102
 
 [sub_resource type="GDScript" id="GDScript_xeo1s"]
