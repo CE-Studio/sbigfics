@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=59 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -9,6 +9,32 @@
 [ext_resource type="Script" path="res://assets/score/score.gd" id="4_wmwgu"]
 [ext_resource type="Script" path="res://inputForward.gd" id="5_1j3bq"]
 [ext_resource type="PackedScene" uid="uid://c6pibdssjb5sh" path="res://laptop_internals.tscn" id="5_6cayf"]
+[ext_resource type="Script" path="res://arms.gd" id="8_l3lo0"]
+[ext_resource type="AudioStream" uid="uid://six2xm76bdg5" path="res://assets/sound/keys/keys-00.ogg" id="11_g7k2d"]
+[ext_resource type="AudioStream" uid="uid://dafghbhnni7xx" path="res://assets/sound/keys/keys-01.ogg" id="12_utuns"]
+[ext_resource type="AudioStream" uid="uid://d33fs3jl0u1bo" path="res://assets/sound/keys/keys-10.ogg" id="13_nvf55"]
+[ext_resource type="AudioStream" uid="uid://dkhs7pr1e40ro" path="res://assets/sound/keys/keys-11.ogg" id="14_f2eq1"]
+[ext_resource type="AudioStream" uid="uid://demuj7elkkktw" path="res://assets/sound/keys/keys-12.ogg" id="15_neycw"]
+[ext_resource type="AudioStream" uid="uid://cbb3yppbb15cf" path="res://assets/sound/keys/keys-13.ogg" id="16_56mph"]
+[ext_resource type="AudioStream" uid="uid://j5ji0e8epnsi" path="res://assets/sound/keys/keys-14.ogg" id="17_23op6"]
+[ext_resource type="AudioStream" uid="uid://df817q7c22i6c" path="res://assets/sound/keys/keys-15.ogg" id="18_x6eh0"]
+[ext_resource type="AudioStream" uid="uid://bbc4tan852fev" path="res://assets/sound/keys/keys-16.ogg" id="19_buehi"]
+[ext_resource type="AudioStream" uid="uid://bbesbbig86d7k" path="res://assets/sound/keys/keys-17.ogg" id="20_68liv"]
+[ext_resource type="AudioStream" uid="uid://dy1rbt6yjjij6" path="res://assets/sound/keys/keys-18.ogg" id="21_cj4ej"]
+[ext_resource type="AudioStream" uid="uid://biayiytrdish8" path="res://assets/sound/keys/keys-19.ogg" id="22_6e5di"]
+[ext_resource type="AudioStream" uid="uid://bhc6xekd1qr16" path="res://assets/sound/keys/keys-02.ogg" id="23_rko00"]
+[ext_resource type="AudioStream" uid="uid://ci117jj620k7k" path="res://assets/sound/keys/keys-20.ogg" id="24_lxly3"]
+[ext_resource type="AudioStream" uid="uid://d2a788cf8cq17" path="res://assets/sound/keys/keys-21.ogg" id="25_fnamc"]
+[ext_resource type="AudioStream" uid="uid://bvdwj0wfsoo7w" path="res://assets/sound/keys/keys-22.ogg" id="26_a1ygq"]
+[ext_resource type="AudioStream" uid="uid://dfmggmpp4i84b" path="res://assets/sound/keys/keys-23.ogg" id="27_vopd8"]
+[ext_resource type="AudioStream" uid="uid://mbxkvvjioig7" path="res://assets/sound/keys/keys-24.ogg" id="28_n0c8w"]
+[ext_resource type="AudioStream" uid="uid://bvx6mwbvemise" path="res://assets/sound/keys/keys-03.ogg" id="29_i4dyl"]
+[ext_resource type="AudioStream" uid="uid://dspnsx3ubxp54" path="res://assets/sound/keys/keys-04.ogg" id="30_bdixt"]
+[ext_resource type="AudioStream" uid="uid://3c4wrw1wgoa7" path="res://assets/sound/keys/keys-05.ogg" id="31_s4mw2"]
+[ext_resource type="AudioStream" uid="uid://c2b3b0i7iu75o" path="res://assets/sound/keys/keys-06.ogg" id="32_62txg"]
+[ext_resource type="AudioStream" uid="uid://dnl04hywa711j" path="res://assets/sound/keys/keys-07.ogg" id="33_1nj2a"]
+[ext_resource type="AudioStream" uid="uid://cpt725srhv22o" path="res://assets/sound/keys/keys-08.ogg" id="34_dt6ba"]
+[ext_resource type="AudioStream" uid="uid://gocfwav047yw" path="res://assets/sound/keys/keys-09.ogg" id="35_whfdy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2tu6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -154,6 +180,138 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Animation" id="Animation_iu5jh"]
+resource_name = "type"
+length = 0.5
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arms/arm2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.381, -0.825, -0.813), Vector3(-0.381, -0.75, -0.813), Vector3(-0.381, -0.825, -0.813), Vector3(-0.381, -0.825, -0.813)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arms/arm3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.381, -0.825, -0.813), Vector3(0.381, -0.825, -0.813), Vector3(0.381, -0.75, -0.813), Vector3(0.381, -0.825, -0.813)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arms/keys")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jqw5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arms/arm2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.381, -0.825, -0.813)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arms/arm3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.381, -0.825, -0.813)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yvf1v"]
+_data = {
+"RESET": SubResource("Animation_jqw5q"),
+"type": SubResource("Animation_iu5jh")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q5bek"]
+streams_count = 25
+stream_0/stream = ExtResource("11_g7k2d")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("12_utuns")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("23_rko00")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("29_i4dyl")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("30_bdixt")
+stream_4/weight = 1.0
+stream_5/stream = ExtResource("31_s4mw2")
+stream_5/weight = 1.0
+stream_6/stream = ExtResource("32_62txg")
+stream_6/weight = 1.0
+stream_7/stream = ExtResource("33_1nj2a")
+stream_7/weight = 1.0
+stream_8/stream = ExtResource("34_dt6ba")
+stream_8/weight = 1.0
+stream_9/stream = ExtResource("35_whfdy")
+stream_9/weight = 1.0
+stream_10/stream = ExtResource("13_nvf55")
+stream_10/weight = 1.0
+stream_11/stream = ExtResource("14_f2eq1")
+stream_11/weight = 1.0
+stream_12/stream = ExtResource("15_neycw")
+stream_12/weight = 1.0
+stream_13/stream = ExtResource("16_56mph")
+stream_13/weight = 1.0
+stream_14/stream = ExtResource("17_23op6")
+stream_14/weight = 1.0
+stream_15/stream = ExtResource("18_x6eh0")
+stream_15/weight = 1.0
+stream_16/stream = ExtResource("19_buehi")
+stream_16/weight = 1.0
+stream_17/stream = ExtResource("20_68liv")
+stream_17/weight = 1.0
+stream_18/stream = ExtResource("21_cj4ej")
+stream_18/weight = 1.0
+stream_19/stream = ExtResource("22_6e5di")
+stream_19/weight = 1.0
+stream_20/stream = ExtResource("24_lxly3")
+stream_20/weight = 1.0
+stream_21/stream = ExtResource("25_fnamc")
+stream_21/weight = 1.0
+stream_22/stream = ExtResource("26_a1ygq")
+stream_22/weight = 1.0
+stream_23/stream = ExtResource("27_vopd8")
+stream_23/weight = 1.0
+stream_24/stream = ExtResource("28_n0c8w")
+stream_24/weight = 1.0
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -217,8 +375,14 @@ script = ExtResource("4_wmwgu")
 [node name="snumber" parent="HBoxContainer/HBoxContainer" instance=ExtResource("4_orngd")]
 layout_mode = 2
 
+[node name="armanims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yvf1v")
+}
+
 [node name="arms" type="Node3D" parent="."]
 transform = Transform3D(1, -6.01766e-08, 1.96829e-07, 0, 0.956305, 0.292372, -2.05822e-07, -0.292372, 0.956305, 0.0235617, 0.966196, 1.88636)
+script = ExtResource("8_l3lo0")
 
 [node name="arm1" type="Sprite3D" parent="arms"]
 transform = Transform3D(0.328415, 0.0879985, 0, -0.0879985, 0.328415, 0, 0, 0, 0.34, -1.451, -1.055, -1.188)
@@ -245,6 +409,9 @@ transform = Transform3D(0.328415, -0.0879985, 0, 0.0879985, 0.328415, 0, 0, 0, 0
 texture = ExtResource("3_630ma")
 hframes = 2
 script = ExtResource("4_tw1lo")
+
+[node name="keys" type="AudioStreamPlayer" parent="arms"]
+stream = SubResource("AudioStreamRandomizer_q5bek")
 
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
