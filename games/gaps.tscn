@@ -1,0 +1,165 @@
+[gd_scene load_steps=18 format=3 uid="uid://ci3tfxec66rp7"]
+
+[ext_resource type="Script" path="res://assets/gamescripts/gaps.gd" id="1_whp4x"]
+[ext_resource type="Script" path="res://assets/gamescripts/gapsplayer.gd" id="2_0j25v"]
+[ext_resource type="Texture2D" uid="uid://kptrcrjrdnf5" path="res://assets/gamesprites/gapsshiptrail.svg" id="3_cb472"]
+[ext_resource type="Texture2D" uid="uid://chcrh0itvd6dv" path="res://assets/gamesprites/gapsship.svg" id="4_r2dww"]
+[ext_resource type="Script" path="res://assets/gamescripts/lerptoorigin.gd" id="5_7nmfj"]
+[ext_resource type="Script" path="res://assets/gamescripts/gapspillar.gd" id="5_n3jrs"]
+[ext_resource type="Texture2D" uid="uid://cu03o10jlyhi4" path="res://assets/gamesprites/flappypost.svg" id="6_0hwfs"]
+[ext_resource type="Texture2D" uid="uid://hb7i5mrfqssv" path="res://assets/gamesprites/gapssmear.svg" id="8_cauex"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[sub_resource type="Curve" id="Curve_kay2t"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.02818, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_w7d4w"]
+offsets = PackedFloat32Array(0, 0.225166, 0.642384, 1)
+colors = PackedColorArray(0.972549, 0.964706, 0.768627, 1, 0.976471, 0.968627, 0.298039, 1, 0.980392, 0.145098, 0.113725, 0.745098, 0.568627, 0.121569, 0.0941176, 0.129412)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_di5cj"]
+radius = 17.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ad234"]
+size = Vector2(150, 804)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72xew"]
+size = Vector2(678, 12)
+
+[sub_resource type="Gradient" id="Gradient_5pfd8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycub1"]
+gradient = SubResource("Gradient_5pfd8")
+width = 102
+
+[sub_resource type="GDScript" id="GDScript_x7e5v"]
+script/source = "extends Sprite2D
+
+
+func _process(delta: float) -> void:
+    scale.x -= delta
+    if scale.x <= 0:
+        $\"..\".endgame()
+"
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_whp4x")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+centered = false
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(175, 512)
+script = ExtResource("2_0j25v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CharacterBody2D"]
+position = Vector2(-45, 0)
+amount = 24
+lifetime = 2.0
+texture = ExtResource("3_cb472")
+direction = Vector2(-1, 0)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+linear_accel_min = -100.0
+scale_amount_curve = SubResource("Curve_kay2t")
+color_ramp = SubResource("Gradient_w7d4w")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+texture = ExtResource("4_r2dww")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_di5cj")
+
+[node name="PillarParent" type="Node2D" parent="."]
+script = ExtResource("5_7nmfj")
+
+[node name="FrontPillar" type="AnimatableBody2D" parent="PillarParent"]
+position = Vector2(594, 512)
+sync_to_physics = false
+script = ExtResource("5_n3jrs")
+
+[node name="Sprite2D" type="Sprite2D" parent="PillarParent/FrontPillar"]
+position = Vector2(0, 500)
+texture = ExtResource("6_0hwfs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PillarParent/FrontPillar"]
+position = Vector2(0, -500)
+texture = ExtResource("6_0hwfs")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarParent/FrontPillar"]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PillarParent/FrontPillar"]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="Area2D" type="Area2D" parent="PillarParent/FrontPillar"]
+position = Vector2(-400, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarParent/FrontPillar/Area2D"]
+shape = SubResource("RectangleShape2D_72xew")
+
+[node name="Pillar2" type="AnimatableBody2D" parent="PillarParent"]
+position = Vector2(794, 512)
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PillarParent/Pillar2"]
+position = Vector2(0, 500)
+texture = ExtResource("6_0hwfs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PillarParent/Pillar2"]
+position = Vector2(0, -500)
+texture = ExtResource("6_0hwfs")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarParent/Pillar2"]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PillarParent/Pillar2"]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="Pillar3" type="AnimatableBody2D" parent="PillarParent"]
+position = Vector2(994, 512)
+sync_to_physics = false
+
+[node name="Sprite2D" type="Sprite2D" parent="PillarParent/Pillar3"]
+position = Vector2(0, 500)
+texture = ExtResource("6_0hwfs")
+
+[node name="Sprite2D2" type="Sprite2D" parent="PillarParent/Pillar3"]
+position = Vector2(0, -500)
+texture = ExtResource("6_0hwfs")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PillarParent/Pillar3"]
+position = Vector2(0, -500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PillarParent/Pillar3"]
+position = Vector2(0, 500)
+shape = SubResource("RectangleShape2D_ad234")
+
+[node name="Smear" type="Sprite2D" parent="."]
+position = Vector2(-380, 512)
+texture = ExtResource("8_cauex")
+script = ExtResource("5_7nmfj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+scale = Vector2(10, 20)
+texture = SubResource("GradientTexture1D_ycub1")
+centered = false
+script = SubResource("GDScript_x7e5v")
+
+[connection signal="body_entered" from="PillarParent/FrontPillar/Area2D" to="PillarParent/FrontPillar" method="_on_area_2d_body_entered"]
