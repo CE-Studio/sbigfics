@@ -31,7 +31,7 @@ func _ready() -> void:
             grid.add_child(h)
 
     desk.visible = false
-    content.add_child(load("res://games/gaps.tscn").instantiate())
+    content.add_child(load("res://games/trein.tscn").instantiate())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

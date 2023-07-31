@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://simpleRetexture.gd" id="15_7e7si"]
 [ext_resource type="Texture2D" uid="uid://dscqwbnmpbic1" path="res://assets/TextSprites/Play1.png" id="15_g1ig0"]
 [ext_resource type="Texture2D" uid="uid://m03gxgjmsqx5" path="res://assets/TextSprites/Play2.png" id="16_445em"]
-[ext_resource type="Texture2D" uid="uid://dxc04jyfiks5x" path="res://assets/Title2.png" id="16_f4o7e"]
+[ext_resource type="Texture2D" uid="uid://trl4kghqu4y1" path="res://assets/Title2.png" id="16_f4o7e"]
 [ext_resource type="Texture2D" uid="uid://bwfmqwohdclxj" path="res://assets/TextSprites/Play3.png" id="17_5vb2f"]
 [ext_resource type="Texture2D" uid="uid://8v322qagfrlm" path="res://assets/TextSprites/Options1.png" id="18_fcgv7"]
 [ext_resource type="Texture2D" uid="uid://ecwadr8nghnc" path="res://assets/TextSprites/Options2.png" id="19_uk8ru"]

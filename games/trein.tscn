@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://rncbppha8tyq"]
+
+[ext_resource type="Script" path="res://assets/gamescripts/trein.gd" id="1_wg73i"]
+[ext_resource type="Texture2D" uid="uid://ci0hyipvvuyko" path="res://assets/ip/CompButton1.png" id="2_nkkm0"]
+[ext_resource type="Texture2D" uid="uid://jalshbnw8aeo" path="res://assets/gamesprites/treinback.svg" id="2_wxxem"]
+[ext_resource type="Texture2D" uid="uid://dvna6jftvh2bo" path="res://assets/gamesprites/treinsig.svg" id="3_0p15m"]
+[ext_resource type="Texture2D" uid="uid://cb0k1yq2wap1e" path="res://assets/ip/CompButton2.png" id="3_5hok2"]
+[ext_resource type="Texture2D" uid="uid://donalidku5k32" path="res://assets/ip/CompButton3.png" id="4_7b2cm"]
+[ext_resource type="Texture2D" uid="uid://dr5yast0dlbb1" path="res://assets/gamesprites/treinwheels.svg" id="4_7sepk"]
+[ext_resource type="Texture2D" uid="uid://2q8s1dfc5h33" path="res://assets/gamesprites/trein.svg" id="5_wqqt3"]
+[ext_resource type="AudioStream" uid="uid://suvbj1i1i3yn" path="res://assets/sound/bell.mp3" id="9_psar7"]
+[ext_resource type="Texture2D" uid="uid://dg62uq7v63dfb" path="res://assets/gamesprites/x.svg" id="10_2agsa"]
+[ext_resource type="Texture2D" uid="uid://bsny0jtewh2se" path="res://assets/gamesprites/c.svg" id="11_yo5t7"]
+
+[node name="game" type="Node2D"]
+position = Vector2(512, 402)
+script = ExtResource("1_wg73i")
+
+[node name="Sprite3D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = ExtResource("2_wxxem")
+
+[node name="s1" type="Sprite2D" parent="."]
+position = Vector2(318, -164)
+texture = ExtResource("3_0p15m")
+hframes = 3
+frame = 2
+
+[node name="s2" type="Sprite2D" parent="."]
+position = Vector2(318, 12)
+texture = ExtResource("3_0p15m")
+hframes = 3
+frame = 2
+
+[node name="s3" type="Sprite2D" parent="."]
+position = Vector2(318, 188)
+texture = ExtResource("3_0p15m")
+hframes = 3
+frame = 2
+
+[node name="trein" type="Sprite2D" parent="."]
+position = Vector2(-447, 317)
+texture = ExtResource("4_7sepk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="trein"]
+position = Vector2(0, -165)
+texture = ExtResource("5_wqqt3")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+visible = false
+offset_left = -512.0
+offset_top = 328.0
+offset_right = -129.0
+offset_bottom = 508.0
+scale = Vector2(0.905, 0.905)
+texture_normal = ExtResource("2_nkkm0")
+
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 27.0
+offset_right = 352.0
+offset_bottom = 151.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "MEDIUM ADVANCE APPROACH"
+autowrap_mode = 3
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+visible = false
+offset_left = -180.0
+offset_top = 332.0
+offset_right = 203.0
+offset_bottom = 512.0
+scale = Vector2(0.905, 0.905)
+texture_normal = ExtResource("3_5hok2")
+
+[node name="Label" type="Label" parent="TextureButton2"]
+layout_mode = 0
+offset_left = 26.5193
+offset_top = 24.3094
+offset_right = 349.519
+offset_bottom = 148.309
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "MEDIUM ADVANCE APPROACH"
+autowrap_mode = 3
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+visible = false
+offset_left = 160.0
+offset_top = 334.0
+offset_right = 543.0
+offset_bottom = 514.0
+scale = Vector2(0.905, 0.905)
+texture_normal = ExtResource("4_7b2cm")
+
+[node name="Label" type="Label" parent="TextureButton3"]
+layout_mode = 0
+offset_left = 24.3094
+offset_top = 22.0995
+offset_right = 347.309
+offset_bottom = 146.1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 34
+text = "MEDIUM ADVANCE APPROACH"
+autowrap_mode = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_psar7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="x" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("10_2agsa")
+
+[node name="c" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("11_yo5t7")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
