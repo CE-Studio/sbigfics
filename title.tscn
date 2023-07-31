@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=58 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -100,22 +100,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_j7053")
 
-[sub_resource type="Gradient" id="Gradient_50akn"]
+[sub_resource type="Gradient" id="Gradient_tp64k"]
 colors = PackedColorArray(0.921828, 0.858808, 0.772824, 1, 0.854902, 0.752941, 0.615686, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_guwyf"]
-gradient = SubResource("Gradient_50akn")
+gradient = SubResource("Gradient_tp64k")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskbj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2wj87"]
 render_priority = 0
 shader = ExtResource("1_uodwl")
 shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_guwyf")
 
 [sub_resource type="BoxMesh" id="BoxMesh_mfy8l"]
-material = SubResource("ShaderMaterial_tskbj")
+material = SubResource("ShaderMaterial_2wj87")
 size = Vector3(5.815, 0.15, 2.24)
 subdivide_width = 2
 subdivide_depth = 2
+
+[sub_resource type="Gradient" id="Gradient_50akn"]
+colors = PackedColorArray(0.921828, 0.858808, 0.772824, 1, 0.854902, 0.752941, 0.615686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_hc2yi"]
+gradient = SubResource("Gradient_50akn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskbj"]
+render_priority = 0
+shader = ExtResource("1_uodwl")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_hc2yi")
 
 [sub_resource type="BoxMesh" id="BoxMesh_vigh1"]
 material = SubResource("ShaderMaterial_tskbj")

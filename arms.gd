@@ -3,6 +3,7 @@ class_name Arms
 
 
 static var playc := 10
+static var mousemove := Vector2()
 
 
 # Called when the node enters the scene tree for the first time.

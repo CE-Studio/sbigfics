@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=77 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -10,8 +10,13 @@
 [ext_resource type="Script" path="res://inputForward.gd" id="5_1j3bq"]
 [ext_resource type="PackedScene" uid="uid://c6pibdssjb5sh" path="res://laptop_internals.tscn" id="5_6cayf"]
 [ext_resource type="Script" path="res://arms.gd" id="8_l3lo0"]
+[ext_resource type="ArrayMesh" uid="uid://df6pd66gwaolh" path="res://assets/mouse.obj" id="8_nhqux"]
+[ext_resource type="Texture2D" uid="uid://oblslppwn8j4" path="res://assets/cardboardPhysicsObject.png" id="9_nkapm"]
+[ext_resource type="ArrayMesh" uid="uid://rvuyv4a23kxb" path="res://assets/Q.U.B.E.obj" id="10_jboey"]
+[ext_resource type="ArrayMesh" uid="uid://crd6yqv2ww2g" path="res://assets/Figure.obj" id="11_7h3o4"]
 [ext_resource type="AudioStream" uid="uid://six2xm76bdg5" path="res://assets/sound/keys/keys-00.ogg" id="11_g7k2d"]
 [ext_resource type="AudioStream" uid="uid://dafghbhnni7xx" path="res://assets/sound/keys/keys-01.ogg" id="12_utuns"]
+[ext_resource type="Texture2D" uid="uid://hq50o821bmea" path="res://assets/FigureTexture.png" id="12_yn8kf"]
 [ext_resource type="AudioStream" uid="uid://d33fs3jl0u1bo" path="res://assets/sound/keys/keys-10.ogg" id="13_nvf55"]
 [ext_resource type="AudioStream" uid="uid://dkhs7pr1e40ro" path="res://assets/sound/keys/keys-11.ogg" id="14_f2eq1"]
 [ext_resource type="AudioStream" uid="uid://demuj7elkkktw" path="res://assets/sound/keys/keys-12.ogg" id="15_neycw"]
@@ -180,6 +185,33 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="Animation" id="Animation_jqw5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("arms/arm2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.381, -0.825, -0.813)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arms/arm3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.381, -0.825, -0.813)]
+}
+
 [sub_resource type="Animation" id="Animation_iu5jh"]
 resource_name = "type"
 length = 0.5
@@ -226,38 +258,67 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_jqw5q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("arms/arm2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.381, -0.825, -0.813)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("arms/arm3:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.381, -0.825, -0.813)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yvf1v"]
 _data = {
 "RESET": SubResource("Animation_jqw5q"),
 "type": SubResource("Animation_iu5jh")
 }
+
+[sub_resource type="Gradient" id="Gradient_50akn"]
+colors = PackedColorArray(0.921828, 0.858808, 0.772824, 1, 0.854902, 0.752941, 0.615686, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tolih"]
+gradient = SubResource("Gradient_50akn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tskbj"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_tolih")
+
+[sub_resource type="BoxMesh" id="BoxMesh_wrt8d"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(5.015, 0.15, 2.24)
+subdivide_width = 2
+subdivide_depth = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wqakq"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqnai"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("9_nkapm")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hob67"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rprlr"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7x45q"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ec2gl"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8y3tf"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eep50"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = ExtResource("12_yn8kf")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q5bek"]
 streams_count = 25
@@ -311,6 +372,13 @@ stream_23/stream = ExtResource("27_vopd8")
 stream_23/weight = 1.0
 stream_24/stream = ExtResource("28_n0c8w")
 stream_24/weight = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_buir2"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(17.345, 15.54, 0.63)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
 
 [node name="Node3D" type="Node3D"]
 
@@ -380,6 +448,30 @@ libraries = {
 "": SubResource("AnimationLibrary_yvf1v")
 }
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="armanims"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.156)
+mesh = SubResource("BoxMesh_wrt8d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="armanims"]
+transform = Transform3D(0.21959, 0, 0.0968509, 0, 0.24, 0, -0.0968509, 0, 0.21959, 1.27532, -0.165, -0.156)
+mesh = ExtResource("8_nhqux")
+surface_material_override/0 = SubResource("ShaderMaterial_wqakq")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="armanims"]
+transform = Transform3D(-0.416891, 0, 0.68279, 0, 0.8, 0, -0.68279, 0, -0.416891, 2.0651, -0.0633265, -0.156)
+material_override = SubResource("ShaderMaterial_mqnai")
+mesh = ExtResource("10_jboey")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="armanims"]
+transform = Transform3D(-0.511593, 0, -0.859228, 0, 1, 0, 0.859228, 0, -0.511593, -1.54997, -0.145746, -0.156)
+mesh = ExtResource("11_7h3o4")
+surface_material_override/0 = SubResource("ShaderMaterial_hob67")
+surface_material_override/1 = SubResource("ShaderMaterial_rprlr")
+surface_material_override/2 = SubResource("ShaderMaterial_7x45q")
+surface_material_override/3 = SubResource("ShaderMaterial_ec2gl")
+surface_material_override/4 = SubResource("ShaderMaterial_8y3tf")
+surface_material_override/5 = SubResource("ShaderMaterial_eep50")
+
 [node name="arms" type="Node3D" parent="."]
 transform = Transform3D(1, -6.01766e-08, 1.96829e-07, 0, 0.956305, 0.292372, -2.05822e-07, -0.292372, 0.956305, 0.0235617, 0.966196, 1.88636)
 script = ExtResource("8_l3lo0")
@@ -412,6 +504,10 @@ script = ExtResource("4_tw1lo")
 
 [node name="keys" type="AudioStreamPlayer" parent="arms"]
 stream = SubResource("AudioStreamRandomizer_q5bek")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -1.59616)
+mesh = SubResource("BoxMesh_buir2")
 
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
