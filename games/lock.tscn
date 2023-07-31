@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0g2ku514tf3w"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_8t380"]
+[ext_resource type="Texture2D" uid="uid://bg8135dtpu5ky" path="res://assets/gamesprites/lockdial.svg" id="2_wafx2"]
+[ext_resource type="Script" path="res://assets/gamescripts/lockdial.gd" id="3_8must"]
+[ext_resource type="Texture2D" uid="uid://8t40w4q2fidw" path="res://assets/gamesprites/lockstopper.svg" id="4_64atk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_8t380")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+centered = false
+
+[node name="LargerDial" type="Sprite2D" parent="."]
+position = Vector2(512, 512)
+scale = Vector2(1.333, 1.333)
+texture = ExtResource("2_wafx2")
+
+[node name="MainDial" type="Sprite2D" parent="."]
+position = Vector2(512, 512)
+texture = ExtResource("2_wafx2")
+script = ExtResource("3_8must")
+
+[node name="SubDial1" type="Sprite2D" parent="MainDial"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial2" type="Sprite2D" parent="MainDial/SubDial1"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial3" type="Sprite2D" parent="MainDial/SubDial1/SubDial2"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial4" type="Sprite2D" parent="MainDial/SubDial1/SubDial2/SubDial3"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial5" type="Sprite2D" parent="MainDial/SubDial1/SubDial2/SubDial3/SubDial4"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial6" type="Sprite2D" parent="MainDial/SubDial1/SubDial2/SubDial3/SubDial4/SubDial5"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial7" type="Sprite2D" parent="MainDial/SubDial1/SubDial2/SubDial3/SubDial4/SubDial5/SubDial6"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="SubDial8" type="Sprite2D" parent="MainDial/SubDial1/SubDial2/SubDial3/SubDial4/SubDial5/SubDial6/SubDial7"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wafx2")
+
+[node name="Stopper" type="Sprite2D" parent="."]
+position = Vector2(512, 800)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("4_64atk")
