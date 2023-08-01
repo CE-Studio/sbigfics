@@ -9,7 +9,7 @@ const X_SPACE := 200
 const SMEAR_START_X := 480
 const SCORE_SCALE := 1.5
 
-var _advanceTime := 0.0
+var _advanceTime := 0.25
 
 @onready var _area:Area2D = $"Area2D"
 @onready var _pillar2:AnimatableBody2D = $"../Pillar2"
@@ -34,7 +34,7 @@ func _process(delta):
             _area.set_deferred("monitoring", true)
     
     
-func _get_rand_pos(considerBuffer:bool):
+func _get_rand_pos(considerBuffer:bool) -> int:
     var output
     if (considerBuffer):
         output = randi_range(START_CENTER_BUFFER, EXTENT)
@@ -54,3 +54,4 @@ func _on_area_2d_body_entered(body):
         _advanceTime = ADVANCE_BUFFER
         _pillarParent.position += Vector2(X_SPACE, 0.0)
         Game.score += 5.0
+        $"../../AudioStreamPlayer".play()

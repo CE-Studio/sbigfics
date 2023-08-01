@@ -1,12 +1,39 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0g2ku514tf3w"]
+[gd_scene load_steps=12 format=3 uid="uid://c0g2ku514tf3w"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_8t380"]
+[ext_resource type="Texture2D" uid="uid://dj820btepq0bq" path="res://assets/gamesprites/lockarc.svg" id="2_ttvdk"]
 [ext_resource type="Texture2D" uid="uid://bg8135dtpu5ky" path="res://assets/gamesprites/lockdial.svg" id="2_wafx2"]
 [ext_resource type="Script" path="res://assets/gamescripts/lockdial.gd" id="3_8must"]
 [ext_resource type="Texture2D" uid="uid://8t40w4q2fidw" path="res://assets/gamesprites/lockstopper.svg" id="4_64atk"]
+[ext_resource type="AudioStream" uid="uid://dytfeujp4rio2" path="res://assets/sound/lockAdvance.mp3" id="6_gsihx"]
+[ext_resource type="AudioStream" uid="uid://gq35wltwaje3" path="res://assets/sound/lockComplete.mp3" id="7_o3bre"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
 size = Vector2(1024, 804)
+
+[sub_resource type="Gradient" id="Gradient_5pfd8"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mtht7"]
+gradient = SubResource("Gradient_5pfd8")
+width = 102
+
+[sub_resource type="GDScript" id="GDScript_a8dwd"]
+script/source = "extends Sprite2D
+
+
+@onready var _gameScript = $\"../MainDial\"
+
+
+func _process(delta: float) -> void:
+    if _gameScript.gaming:
+        scale.x -= delta * 0.75
+        if scale.x <= 0:
+            $\"..\".endgame()
+    else:
+        scale.y -= delta * 13
+        if scale.y <= 0:
+            $\"..\".endgame()
+"
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_8t380")
@@ -15,6 +42,11 @@ script = ExtResource("1_8t380")
 position = Vector2(0, 110)
 texture = SubResource("PlaceholderTexture2D_x5nd2")
 centered = false
+
+[node name="Arc" type="Sprite2D" parent="."]
+position = Vector2(512, 512)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_ttvdk")
 
 [node name="LargerDial" type="Sprite2D" parent="."]
 position = Vector2(512, 512)
@@ -62,3 +94,16 @@ texture = ExtResource("2_wafx2")
 position = Vector2(512, 800)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("4_64atk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+scale = Vector2(10, 20)
+texture = SubResource("GradientTexture1D_mtht7")
+centered = false
+script = SubResource("GDScript_a8dwd")
+
+[node name="AdvanceAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gsihx")
+
+[node name="WinAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_o3bre")

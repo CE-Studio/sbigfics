@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ci3tfxec66rp7"]
+[gd_scene load_steps=19 format=3 uid="uid://ci3tfxec66rp7"]
 
 [ext_resource type="Script" path="res://assets/gamescripts/gaps.gd" id="1_whp4x"]
 [ext_resource type="Script" path="res://assets/gamescripts/gapsplayer.gd" id="2_0j25v"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://assets/gamescripts/gapspillar.gd" id="5_n3jrs"]
 [ext_resource type="Texture2D" uid="uid://cu03o10jlyhi4" path="res://assets/gamesprites/flappypost.svg" id="6_0hwfs"]
 [ext_resource type="Texture2D" uid="uid://hb7i5mrfqssv" path="res://assets/gamesprites/gapssmear.svg" id="8_cauex"]
+[ext_resource type="AudioStream" uid="uid://bi5e1ilx4ud7y" path="res://assets/sound/gapsAdvance.mp3" id="9_8sfrb"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
 size = Vector2(1024, 804)
@@ -29,10 +30,10 @@ size = Vector2(150, 804)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72xew"]
 size = Vector2(678, 12)
 
-[sub_resource type="Gradient" id="Gradient_5pfd8"]
+[sub_resource type="Gradient" id="Gradient_ytvdx"]
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ycub1"]
-gradient = SubResource("Gradient_5pfd8")
+gradient = SubResource("Gradient_ytvdx")
 width = 102
 
 [sub_resource type="GDScript" id="GDScript_x7e5v"]
@@ -161,5 +162,8 @@ scale = Vector2(10, 20)
 texture = SubResource("GradientTexture1D_ycub1")
 centered = false
 script = SubResource("GDScript_x7e5v")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_8sfrb")
 
 [connection signal="body_entered" from="PillarParent/FrontPillar/Area2D" to="PillarParent/FrontPillar" method="_on_area_2d_body_entered"]
