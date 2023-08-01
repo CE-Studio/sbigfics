@@ -31,7 +31,7 @@ func _ready() -> void:
             grid.add_child(h)
 
     desk.visible = false
-    content.add_child(load("res://games/lock.tscn").instantiate())
+    content.add_child(load("res://games/getclose.tscn").instantiate())
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,5 +48,6 @@ func _input(event: InputEvent) -> void:
         cur.position = event.position
 
 func nextgame():
+    Score.score = round(Game.score)
     for i in content.get_children():
         i.queue_free()

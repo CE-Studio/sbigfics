@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://d32g66vsbr0ho"]
+
+[ext_resource type="Script" path="res://assets/gamescripts/getclose.gd" id="1_3k72c"]
+
+[sub_resource type="Gradient" id="Gradient_8wqmp"]
+colors = PackedColorArray(0.584314, 0, 0, 1, 0.819608, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bm43f"]
+gradient = SubResource("Gradient_8wqmp")
+width = 1024
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5mrf1"]
+size = Vector2(10, 804)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mvha2"]
+size = Vector2(60, 60)
+
+[node name="game" type="Node2D"]
+position = Vector2(512, 402)
+script = ExtResource("1_3k72c")
+
+[node name="Sprite3D2" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+scale = Vector2(1, 804)
+texture = SubResource("GradientTexture1D_bm43f")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-512, 110)
+texture = SubResource("PlaceholderTexture2D_5mrf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(0, -402)
+rotation = 0.785398
+scale = Vector2(1, 1)
+texture = SubResource("PlaceholderTexture2D_mvha2")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Sprite2D3"]
+position = Vector2(0, 402)
+rotation = 0.785398
+scale = Vector2(1, 1)
+texture = SubResource("PlaceholderTexture2D_mvha2")

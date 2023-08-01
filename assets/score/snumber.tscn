@@ -1,6 +1,19 @@
-[gd_scene load_steps=33 format=3 uid="uid://b2p12h3jb5gm8"]
+[gd_scene load_steps=37 format=3 uid="uid://b2p12h3jb5gm8"]
 
 [ext_resource type="Texture2D" uid="uid://uvfuyvlxustq" path="res://assets/TextSprites/Numbers.png" id="1_1o6a2"]
+[ext_resource type="Texture2D" uid="uid://o1tdhpg6qf0i" path="res://assets/TextSprites/Minus.png" id="1_ohpj6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rr24i"]
+atlas = ExtResource("1_ohpj6")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isnxf"]
+atlas = ExtResource("1_ohpj6")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgqjq"]
+atlas = ExtResource("1_ohpj6")
+region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrrs4"]
 atlas = ExtResource("1_1o6a2")
@@ -124,6 +137,20 @@ region = Rect2(1152, 256, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ryypy"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rr24i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isnxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgqjq")
+}],
+"loop": true,
+"name": &"-",
+"speed": 3.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lrrs4")
@@ -273,5 +300,6 @@ anchors_preset = 0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(40, 64)
 sprite_frames = SubResource("SpriteFrames_ryypy")
-animation = &"9"
+animation = &"-"
 autoplay = "0"
+frame_progress = 0.105147
