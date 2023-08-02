@@ -31,11 +31,9 @@ texture = SubResource("PlaceholderTexture2D_5mrf1")
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D3"]
 position = Vector2(0, -402)
 rotation = 0.785398
-scale = Vector2(1, 1)
 texture = SubResource("PlaceholderTexture2D_mvha2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="Sprite2D3"]
 position = Vector2(0, 402)
 rotation = 0.785398
-scale = Vector2(1, 1)
 texture = SubResource("PlaceholderTexture2D_mvha2")

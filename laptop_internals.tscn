@@ -112,14 +112,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="desktop"]
+[node name="screentree" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(0, 110)
 texture = ExtResource("11_dgxmv")
 centered = false
 hframes = 3
-
-[node name="screentree" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
 
 [node name="TextureRect2" type="Sprite2D" parent="."]
 scale = Vector2(1.445, 1.445)

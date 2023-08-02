@@ -12,6 +12,10 @@ static var instance:Laptop
 var counts := {}
 
 
+var _tt := 0
+var _typewait = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
     instance = self
@@ -31,12 +35,15 @@ func _ready() -> void:
             grid.add_child(h)
 
     desk.visible = false
-    content.add_child(load("res://games/getclose.tscn").instantiate())
+    _loadgame()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    pass
+    if _typewait and (Arms.playc <= 0):
+        _typewait = false
+        $Sprite2D.visible = false
+        _loadgame()
 
 
 func button(name:String):
@@ -47,7 +54,20 @@ func _input(event: InputEvent) -> void:
     if event is InputEventMouseMotion:
         cur.position = event.position
 
+
 func nextgame():
     Score.score = round(Game.score)
     for i in content.get_children():
         i.queue_free()
+    Arms.playc = 5
+    $Sprite2D.visible = true
+    _typewait = true
+
+
+func ticktype() -> void:
+    _tt += 1
+    $Sprite2D.frame = _tt % 3
+
+
+func _loadgame():
+    content.add_child(load("res://games/trein.tscn").instantiate())
