@@ -14,6 +14,7 @@ var counts := {}
 
 var _tt := 0
 var _typewait = false
+var _games:Array[PackedScene]
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,10 +22,10 @@ func _ready() -> void:
     instance = self
     for i in DirAccess.get_files_at("res://assets/CharacterIcons/"):
         var j = i.split(".")
-        if j[-1] == "png":
+        if j[-1] == "import":
+            var tex = load("res://assets/CharacterIcons/" + j[0] + ".png")
             if j[0] == "Kevin 34":
                 j[0] = "Kevin, 34"
-            var tex = load("res://assets/CharacterIcons/" + i)
             var h:IPButton = _bbase.instantiate()
             h.ico = tex
             h.title = j[0]
@@ -33,6 +34,11 @@ func _ready() -> void:
             h.cb = button
 
             grid.add_child(h)
+    for i in DirAccess.get_files_at("res://games/"):
+        var j = i.split(".")
+        if (j[-1] == "tscn") or (j[-1] == "remap"):
+            _games.append(load("res://games/" + j[0] + ".tscn"))
+
 
     desk.visible = false
     _loadgame()
@@ -70,4 +76,5 @@ func ticktype() -> void:
 
 
 func _loadgame():
-    content.add_child(load("res://games/trein.tscn").instantiate())
+    _games.shuffle()
+    content.add_child(_games[0].instantiate())
