@@ -78,3 +78,4 @@ func ticktype() -> void:
 func _loadgame():
     _games.shuffle()
     content.add_child(_games[0].instantiate())
+    #content.add_child(load("res://games/trein.tscn").instantiate())
