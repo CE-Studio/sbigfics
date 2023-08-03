@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node) -> void:
     print(\"ack\")
-    Game.score -= 100
+    Game.score -= 20
     $\"../AnimatedSprite2D\".position = position
     $\"../AnimatedSprite2D\".play(\"default\")
     $\"../AudioStreamPlayer\".play()
