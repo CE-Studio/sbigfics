@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rlmtjrp4c5jp"
-path="res://.godot/imported/Seanna+Ruby.png-8301e882e2f7c6d71a40e0b4243ebddd.ctex"
+uid="uid://b30rbxe3vm4cy"
+path="res://.godot/imported/Rho.png-9948bd83c1e5fabaa9656b77d44c5929.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/OtherChars/Seanna+Ruby.png"
-dest_files=["res://.godot/imported/Seanna+Ruby.png-8301e882e2f7c6d71a40e0b4243ebddd.ctex"]
+source_file="res://assets/OtherChars/Rho.png"
+dest_files=["res://.godot/imported/Rho.png-9948bd83c1e5fabaa9656b77d44c5929.ctex"]
 
 [params]
 
