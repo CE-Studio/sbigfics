@@ -12,8 +12,12 @@ const ROT_SPEED := 6.0
 var _grounded := false
 var _velocity := 0.0
 var _isAlive := true
+var _endTimer := 0.0
 @onready var _startX := position.x
 @onready var _spr := $"Sprite2D"
+@onready var _level := $"../TileMap"
+@onready var _explosion := $"../Explosion"
+@onready var _exploSfx := $"../DeathSound"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +42,13 @@ func _process(delta):
     move_and_slide()
     if (position.x < _startX):
         _death()
+    if _level.position.x < -19000.0:
+        if !$"../AnimationPlayer".is_playing():
+            $"../AnimationPlayer".play("DropComplete")
+        _endTimer += delta
+        if _endTimer > 1.5:
+            Game.score += 200
+            $"..".endgame()
 
 
 func _on_enter_spike(body:Node2D):
@@ -46,4 +57,12 @@ func _on_enter_spike(body:Node2D):
 
 func _death():
     _isAlive = false
-    print("death")
+    _explosion.position = position
+    _explosion.play("default")
+    _exploSfx.play()
+    Game.score += abs(_level.position.x) * 0.01 - 50
+    $"../Music".stop()
+
+
+func _on_death_sound_finished():
+    $"..".endgame()
