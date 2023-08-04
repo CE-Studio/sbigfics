@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=82 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -281,11 +281,11 @@ _data = {
 "type": SubResource("Animation_iu5jh")
 }
 
-[sub_resource type="Gradient" id="Gradient_50akn"]
+[sub_resource type="Gradient" id="Gradient_8bryn"]
 colors = PackedColorArray(0.921828, 0.858808, 0.772824, 1, 0.854902, 0.752941, 0.615686, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_tolih"]
-gradient = SubResource("Gradient_50akn")
+gradient = SubResource("Gradient_8bryn")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tskbj"]
 render_priority = 0
@@ -392,7 +392,32 @@ stream_24/weight = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_buir2"]
 material = SubResource("ShaderMaterial_tskbj")
-size = Vector3(17.345, 15.54, 0.63)
+size = Vector3(17.345, 15.54, 0.165)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="Gradient" id="Gradient_1vrej"]
+colors = PackedColorArray(0.463453, 0.372974, 0.243732, 1, 0.651599, 0.536357, 0.377452, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m0py7"]
+gradient = SubResource("Gradient_1vrej")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1gta"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_m0py7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_15ffi"]
+material = SubResource("ShaderMaterial_t1gta")
+size = Vector3(0.3, 15.54, 0.63)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_syu03"]
+material = SubResource("ShaderMaterial_t1gta")
+size = Vector3(0.3, 5.23, 0.63)
 subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
@@ -523,8 +548,48 @@ script = ExtResource("4_tw1lo")
 stream = SubResource("AudioStreamRandomizer_q5bek")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -1.59616)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1.443)
 mesh = SubResource("BoxMesh_buir2")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -1.443)
+mesh = SubResource("BoxMesh_buir2")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13263, 0, -1.443)
+mesh = SubResource("BoxMesh_15ffi")
+skeleton = NodePath("../MeshInstance3D6")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 8.98699, 5.04967, -9.25522)
+mesh = SubResource("BoxMesh_buir2")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.78935, -9.443)
+mesh = SubResource("BoxMesh_buir2")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5.43799, 5, -1.443)
+mesh = SubResource("BoxMesh_syu03")
+skeleton = NodePath("../MeshInstance3D6")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.858, 0, -1.443)
+mesh = SubResource("BoxMesh_15ffi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0954, 3.60625, -5.28032)
+light_color = Color(1, 1, 0.917647, 1)
+light_energy = 0.54
+light_indirect_energy = 3.474
+light_size = 1.0
+distance_fade_begin = 1602.39
+distance_fade_length = 12.9
+omni_range = 1856.04
+omni_attenuation = 0.196146
 
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
