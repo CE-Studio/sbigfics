@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://t3qusq4hcqqw"]
+
+[ext_resource type="Texture2D" uid="uid://bop37w6fkjtgl" path="res://assets/gamesprites/dashspike.svg" id="1_o4rso"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huvtq"]
+size = Vector2(20, 42)
+
+[node name="Node2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_o4rso")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_huvtq")

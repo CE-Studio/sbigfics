@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=3 uid="uid://duv0rd0pmo1ha"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_p8r8s"]
+[ext_resource type="Texture2D" uid="uid://bomgguv6m0eu" path="res://assets/gamesprites/dashground.svg" id="2_wl1kk"]
+[ext_resource type="Texture2D" uid="uid://ce8ka5p8gkj2m" path="res://assets/gamesprites/dashgroundline.svg" id="3_v6kdf"]
+[ext_resource type="Texture2D" uid="uid://cio0lugnknepf" path="res://assets/gamesprites/dashplayer.svg" id="4_p2ocm"]
+[ext_resource type="PackedScene" uid="uid://dnac2l7d3ilhq" path="res://assets/gamesprites/dashblock.tscn" id="5_wyckc"]
+[ext_resource type="PackedScene" uid="uid://t3qusq4hcqqw" path="res://assets/gamesprites/dashspike.tscn" id="6_n86rk"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[sub_resource type="GDScript" id="GDScript_oqgnj"]
+script/source = "extends RigidBody2D
+
+
+var _speed = 750.0
+@onready var _player := $\"../Player\"
+@onready var _grndSpr := $\"Sprite2D\"
+@onready var _level := $\"../TileMap\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    _grndSpr.move_local_x(_speed * -delta)
+    _level.move_local_x(_speed * -delta)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncdyx"]
+size = Vector2(1531, 381.5)
+
+[sub_resource type="GDScript" id="GDScript_27auo"]
+script/source = "extends CharacterBody2D
+
+
+const GRAVITY := 5500.0
+const JUMP_POWER := 1600.0
+const ROT_LERP_SCALE := 15.0
+const ROT_SPEED := 6.0
+var _grounded := false
+var _velocity := 0.0
+@onready var _spr := $\"Sprite2D\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    _spr.rotation = round(_spr.rotation / PI) * PI
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    _grounded = is_on_floor()
+    if _grounded:
+        var divRot = _spr.rotation / PI
+        _spr.rotation = lerp(divRot, round(divRot), ROT_LERP_SCALE * delta) * PI
+        if Input.get_action_strength(\"MouseL\") > 0.9:
+            velocity = Vector2(velocity.x, -JUMP_POWER)
+    else:
+        _spr.rotate(ROT_SPEED * delta)
+    velocity = Vector2(velocity.x, velocity.y + GRAVITY * delta)
+    move_and_slide()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3x2m6"]
+size = Vector2(100, 100)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_tpt26"]
+scenes/1/scene = ExtResource("5_wyckc")
+scenes/3/scene = ExtResource("6_n86rk")
+
+[sub_resource type="TileSet" id="TileSet_iqxyv"]
+tile_size = Vector2i(96, 96)
+sources/0 = SubResource("TileSetScenesCollectionSource_tpt26")
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_p8r8s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+centered = false
+
+[node name="Ground" type="RigidBody2D" parent="."]
+position = Vector2(512, 900)
+gravity_scale = 0.0
+freeze = true
+script = SubResource("GDScript_oqgnj")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+modulate = Color(0.266667, 0.698039, 1, 1)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_wl1kk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_ncdyx")
+
+[node name="GroundLine" type="Sprite2D" parent="."]
+position = Vector2(512, 712)
+texture = ExtResource("3_v6kdf")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(250, 652)
+script = SubResource("GDScript_27auo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("4_p2ocm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_3x2m6")
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(0, 709)
+tile_set = SubResource("TileSet_iqxyv")
+format = 2
+layer_0/tile_data = PackedInt32Array(-65522, 0, 196608, -65511, 0, 196608, -65500, 0, 65536, -131032, 0, 65536, -65496, 0, 65536, -65492, 0, 65536, -131028, 0, 65536, -196564, 0, 65536, -65499, 0, 196608, -65498, 0, 196608, -65497, 0, 196608, -65495, 0, 196608, -65494, 0, 196608, -65493, 0, 196608, -65510, 0, 196608)

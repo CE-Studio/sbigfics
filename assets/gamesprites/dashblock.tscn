@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnac2l7d3ilhq"]
+
+[ext_resource type="Texture2D" uid="uid://s85xp8dr1s0c" path="res://assets/gamesprites/dashblock.svg" id="1_lb264"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to2lh"]
+size = Vector2(100, 100)
+
+[node name="Block" type="RigidBody2D"]
+gravity_scale = 0.0
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_lb264")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_to2lh")
