@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://y4q7t6glscs1"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_6fqn6"]
+[ext_resource type="Texture2D" uid="uid://b3nobmjkix5wq" path="res://assets/gamesprites/towerssegment.svg" id="2_sxop8"]
+[ext_resource type="FontFile" uid="uid://dshlyps0l23xy" path="res://assets/fon/PUSAB___.otf" id="3_lb3sx"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[sub_resource type="GDScript" id="GDScript_jmv1y"]
+script/source = "extends RigidBody2D
+
+
+const MIN_STARTING_VALUE := 5
+const MAX_STARTING_VALUE := 15
+const MAX_ADVANCE_VALUE := 20
+var _enemySegments := []
+var _currentValue := 0
+@onready var _text := $\"Label\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    _currentValue = randi_range(MIN_STARTING_VALUE, MAX_STARTING_VALUE)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+    _text.text = str(_currentValue)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1aspk"]
+size = Vector2(314, 181)
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_6fqn6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+centered = false
+
+[node name="BasePlayerSegment" type="RigidBody2D" parent="."]
+position = Vector2(256, 812)
+freeze = true
+script = SubResource("GDScript_jmv1y")
+
+[node name="Sprite2D" type="Sprite2D" parent="BasePlayerSegment"]
+modulate = Color(0, 1, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="BasePlayerSegment"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlayerSegment"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemyTower" type="Node2D" parent="."]
