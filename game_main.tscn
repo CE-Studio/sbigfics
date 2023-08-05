@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=127 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -683,13 +683,6 @@ subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_7xrcv"]
-material = SubResource("ShaderMaterial_tskbj")
-size = Vector3(30, 30, 0.165)
-subdivide_width = 2
-subdivide_height = 2
-subdivide_depth = 2
-
 [sub_resource type="Gradient" id="Gradient_qcouk"]
 colors = PackedColorArray(0.283561, 0.222893, 0.135925, 1, 0.854902, 0.752941, 0.615686, 1)
 
@@ -703,6 +696,25 @@ shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_2gejn")
 
 [sub_resource type="BoxMesh" id="BoxMesh_72dgs"]
 material = SubResource("ShaderMaterial_xl4lo")
+size = Vector3(30, 30, 0.165)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xrcv"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(30, 30, 0.165)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_asx0v"]
+render_priority = 0
+shader = ExtResource("2_d8yyp")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_tolih")
+
+[sub_resource type="BoxMesh" id="BoxMesh_w1ide"]
+material = SubResource("ShaderMaterial_asx0v")
 size = Vector3(30, 30, 0.165)
 subdivide_width = 2
 subdivide_height = 2
@@ -1069,35 +1081,57 @@ stream = SubResource("AudioStreamRandomizer_q5bek")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1.443)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_buir2")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15691, 12.8861, -1.48451)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_buir2")
+skeleton = NodePath("../MeshInstance3D5")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0, -1.443)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_buir2")
 skeleton = NodePath("../MeshInstance3D5")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.13263, 0, -1.443)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_15ffi")
 skeleton = NodePath("../MeshInstance3D6")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10.88, -5.5787, 5.15571)
+mesh = SubResource("BoxMesh_72dgs")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 25.7229, -5.5787, 7.58843)
+mesh = SubResource("BoxMesh_7xrcv")
+skeleton = NodePath("../MeshInstance3D5")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.91069e-15, -1, 4.37114e-08, -4.37114e-08, -4.37114e-08, -1, 1, 0, -4.37114e-08, 10.6814, 7.76011, 13.115)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_w1ide")
+skeleton = NodePath("../MeshInstance3D5")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.78935, -9.443)
 mesh = SubResource("BoxMesh_7xrcv")
 skeleton = NodePath("../MeshInstance3D5")
 
-[node name="MeshInstance3D8" type="MeshInstance3D" parent="MeshInstance3D8"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.880011, -2.78935, -2.89064)
-mesh = SubResource("BoxMesh_72dgs")
-skeleton = NodePath("../MeshInstance3D5")
-
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5.43799, 5, -1.443)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_syu03")
 skeleton = NodePath("../MeshInstance3D6")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.858, 0, -1.443)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_15ffi")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -1117,6 +1151,7 @@ script = ExtResource("41_qxbc8")
 
 [node name="fyrf" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2.39829, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_krcri")
 autoplay = "default"
@@ -1124,6 +1159,7 @@ frame_progress = 0.926041
 
 [node name="gamma" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_rr37u")
 animation = &"talk"
@@ -1132,6 +1168,7 @@ frame_progress = 0.997205
 
 [node name="rhare" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.347198, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_n7h2d")
 autoplay = "default"
@@ -1139,6 +1176,7 @@ frame_progress = 0.864888
 
 [node name="rho" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.612823, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_ekvvg")
 animation = &"talk"
@@ -1147,6 +1185,7 @@ frame_progress = 0.576677
 
 [node name="sarah" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.415253, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_vmtw0")
 animation = &"talk"
@@ -1155,6 +1194,7 @@ frame_progress = 0.185688
 
 [node name="seanna ruby" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1.17769, 0)
+flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_kbde8")
 animation = &"talk1"
