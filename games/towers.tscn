@@ -103,6 +103,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 812)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -127,6 +128,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment2" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 630)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -151,6 +153,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment3" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 448)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -175,6 +178,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment4" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 266)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -199,6 +203,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment5" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 84)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -223,6 +228,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment6" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -98)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -247,6 +253,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment7" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -280)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
@@ -271,6 +278,7 @@ shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemySegment8" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -462)
+input_pickable = true
 freeze = true
 script = ExtResource("4_y1hxl")
 
