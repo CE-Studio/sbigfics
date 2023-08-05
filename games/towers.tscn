@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://y4q7t6glscs1"]
+[gd_scene load_steps=14 format=3 uid="uid://y4q7t6glscs1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_6fqn6"]
 [ext_resource type="Texture2D" uid="uid://b3nobmjkix5wq" path="res://assets/gamesprites/towerssegment.svg" id="2_sxop8"]
 [ext_resource type="FontFile" uid="uid://dshlyps0l23xy" path="res://assets/fon/PUSAB___.otf" id="3_lb3sx"]
 [ext_resource type="Script" path="res://assets/gamescripts/enemytower.gd" id="4_y1hxl"]
+[ext_resource type="AudioStream" uid="uid://bdrpkux2mwked" path="res://assets/sound/towersMove.mp3" id="5_mn3hm"]
+[ext_resource type="AudioStream" uid="uid://dpfbomogqnv8m" path="res://assets/sound/towersComplete.mp3" id="6_y5c38"]
+[ext_resource type="AudioStream" uid="uid://c7x2j4i2lyjjg" path="res://assets/sound/towersFail.mp3" id="7_8y7di"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
 size = Vector2(1024, 804)
@@ -18,10 +21,12 @@ const MAX_ADVANCE_VALUE := 20
 const SCORE_SCALE := 0.006667
 const MIN_SEGMENTS := 3
 const Y_ADVANCE_SPACING := 182
+const END_TIMEOUT := 1.5
 var _enemySegments := []
 var _currentValue := 0
 var _currentNextY := position.y
 var _isGaming := true
+var _endTimeout := 0.0
 @onready var _text := $\"Label\"
 @onready var _enemyTower := $\"../../EnemyTower\"
 
@@ -59,6 +64,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     _text.text = str(_currentValue)
+    if !_isGaming:
+        _endTimeout += delta
+        $\"../../Sprite2D2\".isGaming = false
+        if (_endTimeout > END_TIMEOUT):
+            if (freeze == true):
+                Game.score += 150
+            else:
+                Game.score -= 100
+            $\"../..\".endgame()
 
 
 func try_segment(segment:Node2D):
@@ -71,14 +85,44 @@ func try_segment(segment:Node2D):
             _currentValue += segment.value
             segment.sprite.set_modulate(Color(0, 1, 1, 1))
             segment.text.text = \"\"
+            if _enemyTower.get_child_count() == 0:
+                _isGaming = false
+                $\"../../Win\".play()
+            else:
+                $\"../../Move\".play()
         else:
             _isGaming = false
+            $\"../../Fail\".play()
             for i in $\"..\".get_child_count():
                 $\"..\".get_child(i).freeze = false
+                $\"..\".get_child(i).apply_impulse(Vector2(randf() * 500.0 - 250.0, randf() * 500.0 - 250.0))
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aspk"]
 size = Vector2(314, 181)
+
+[sub_resource type="Gradient" id="Gradient_22c4a"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_de2qd"]
+gradient = SubResource("Gradient_22c4a")
+width = 102
+
+[sub_resource type="GDScript" id="GDScript_5s74i"]
+script/source = "extends Sprite2D
+
+
+var isGaming := true
+
+
+func _process(delta: float) -> void:
+    if isGaming:
+        scale.x -= (delta * 1.5)
+        if scale.x <= 0:
+            Game.score -= 50
+            $\"..\".endgame()
+    else:
+        move_local_y(-50 * delta)
+"
 
 [node name="game" type="Node3D"]
 script = ExtResource("1_6fqn6")
@@ -315,6 +359,22 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment8"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+scale = Vector2(10, 20)
+texture = SubResource("GradientTexture1D_de2qd")
+centered = false
+script = SubResource("GDScript_5s74i")
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mn3hm")
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_y5c38")
+
+[node name="Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8y7di")
 
 [connection signal="input_event" from="EnemyTower/EnemySegment" to="EnemyTower/EnemySegment" method="_on_input_event"]
 [connection signal="input_event" from="EnemyTower/EnemySegment2" to="EnemyTower/EnemySegment2" method="_on_input_event"]
