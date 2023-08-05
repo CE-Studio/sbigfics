@@ -23,7 +23,7 @@ var _endTimer := 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
     instance = self
-    _spr.rotation = round(_spr.rotation / PI) * PI
+    _spr.rotation = round(_spr.rotation / PI * 0.5) * (PI * 0.5)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,8 +32,8 @@ func _process(delta):
         return
     _grounded = is_on_floor()
     if _grounded:
-        var divRot = _spr.rotation / PI
-        _spr.rotation = lerp(divRot, round(divRot), ROT_LERP_SCALE * delta) * PI
+        var divRot = _spr.rotation / (PI * 0.5)
+        _spr.rotation = lerp(divRot, round(divRot), ROT_LERP_SCALE * delta) * (PI * 0.5)
         if Input.get_action_strength("MouseL") > 0.9:
             velocity = Vector2(velocity.x, -JUMP_POWER)
     else:
