@@ -17,8 +17,11 @@ const MAX_STARTING_VALUE := 15
 const MAX_ADVANCE_VALUE := 20
 const SCORE_SCALE := 0.006667
 const MIN_SEGMENTS := 3
+const Y_ADVANCE_SPACING := 182
 var _enemySegments := []
 var _currentValue := 0
+var _currentNextY := position.y
+var _isGaming := true
 @onready var _text := $\"Label\"
 @onready var _enemyTower := $\"../../EnemyTower\"
 
@@ -59,7 +62,19 @@ func _process(delta):
 
 
 func try_segment(segment:Node2D):
-    pass
+    if _isGaming:
+        if segment.value < _currentValue:
+            _currentNextY -= Y_ADVANCE_SPACING
+            segment.targetY = _currentNextY
+            segment.input_pickable = false
+            segment.reparent($\"..\")
+            _currentValue += segment.value
+            segment.sprite.set_modulate(Color(0, 1, 1, 1))
+            segment.text.text = \"\"
+        else:
+            _isGaming = false
+            for i in $\"..\".get_child_count():
+                $\"..\".get_child(i).freeze = false
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aspk"]
