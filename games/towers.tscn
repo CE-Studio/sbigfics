@@ -17,11 +17,15 @@ const MAX_ADVANCE_VALUE := 20
 var _enemySegments := []
 var _currentValue := 0
 @onready var _text := $\"Label\"
+@onready var _enemyTower := $\"../EnemyTower\"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     _currentValue = randi_range(MIN_STARTING_VALUE, MAX_STARTING_VALUE)
+    for i in _enemyTower.get_child_count():
+        _enemySegments.append(_enemyTower.get_child(i))
+    
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
