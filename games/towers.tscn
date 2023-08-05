@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://y4q7t6glscs1"]
+[gd_scene load_steps=8 format=3 uid="uid://y4q7t6glscs1"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_6fqn6"]
 [ext_resource type="Texture2D" uid="uid://b3nobmjkix5wq" path="res://assets/gamesprites/towerssegment.svg" id="2_sxop8"]
 [ext_resource type="FontFile" uid="uid://dshlyps0l23xy" path="res://assets/fon/PUSAB___.otf" id="3_lb3sx"]
+[ext_resource type="Script" path="res://assets/gamescripts/enemytower.gd" id="4_y1hxl"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
 size = Vector2(1024, 804)
@@ -14,6 +15,8 @@ script/source = "extends RigidBody2D
 const MIN_STARTING_VALUE := 5
 const MAX_STARTING_VALUE := 15
 const MAX_ADVANCE_VALUE := 20
+const SCORE_SCALE := 0.006667
+const MIN_SEGMENTS := 3
 var _enemySegments := []
 var _currentValue := 0
 @onready var _text := $\"Label\"
@@ -22,15 +25,40 @@ var _currentValue := 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+    var segmentCount = floor(Game.score * SCORE_SCALE) + MIN_SEGMENTS
+    segmentCount = clampi(segmentCount, MIN_SEGMENTS, _enemyTower.get_child_count())
+    for i in range(_enemyTower.get_child_count() - 1, segmentCount - 1, -1):
+        _enemyTower.get_child(i).queue_free()
     _currentValue = randi_range(MIN_STARTING_VALUE, MAX_STARTING_VALUE)
     for i in _enemyTower.get_child_count():
         _enemySegments.append(_enemyTower.get_child(i))
+    var _valueArray := []
+    for i in _enemySegments.size():
+        _valueArray.append(0)
+    var _tempTotal = _currentValue
+    var _lastTotal = 0
+    var _lastTotal2 = 0
+    for i in _valueArray.size():
+        var _newValue = randi_range(_lastTotal2, _tempTotal)
+        var _newIndex = clamp(randi_range(0, i + 3), 0, _valueArray.size() - 1)
+        while _valueArray[_newIndex] > 0:
+            _newIndex = clamp(randi_range(0, i + 3), 0, _valueArray.size() - 1)
+        _valueArray[_newIndex] = _newValue
+        _lastTotal2 = _lastTotal
+        _lastTotal = _tempTotal
+        _tempTotal += _newValue
+    for i in _valueArray.size():
+        _enemySegments[i].set_value(_valueArray[i])
     
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     _text.text = str(_currentValue)
+
+
+func try_segment(segment:Node2D):
+    pass
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1aspk"]
@@ -69,3 +97,195 @@ position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
 [node name="EnemyTower" type="Node2D" parent="."]
+
+[node name="EnemySegment" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, 812)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment2" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, 630)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment2"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment2"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment2"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment3" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, 448)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment3"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment3"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment3"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment4" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, 266)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment4"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment4"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment4"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment5" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, 84)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment5"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment5"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment5"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment6" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, -98)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment6"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment6"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment6"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment7" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, -280)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment7"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment7"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment7"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="EnemySegment8" type="RigidBody2D" parent="EnemyTower"]
+position = Vector2(768, -462)
+freeze = true
+script = ExtResource("4_y1hxl")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnemyTower/EnemySegment8"]
+modulate = Color(1, 0, 1, 1)
+texture = ExtResource("2_sxop8")
+
+[node name="Label" type="Label" parent="EnemyTower/EnemySegment8"]
+offset_left = -113.0
+offset_top = -7.0
+offset_right = 116.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("3_lb3sx")
+theme_override_font_sizes/font_size = 90
+text = "1234"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment8"]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1aspk")
