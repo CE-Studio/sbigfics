@@ -7,6 +7,7 @@ var _bbase:PackedScene = preload("res://assets/ip/ipbutton.tscn")
 @onready var content:Node3D = $screentree
 @onready var desk:Panel = $desktop
 static var instance:Laptop
+static var awake := true
 
 
 var counts := {}

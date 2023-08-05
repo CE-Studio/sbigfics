@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=117 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -217,6 +217,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.381, -0.825, -0.813)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("laptopgame/Cube_001:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("arms/arm2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.38268e-08, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("arms/arm3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.19135e-08, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_iu5jh"]
 resource_name = "type"
@@ -281,9 +317,89 @@ tracks/3/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fxvci"]
+resource_name = "panicc"
+length = 0.6
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("laptopgame/Cube_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.54),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 0, 0), Vector3(1.5708, 0, 0), Vector3(3.14159, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("arms/arm2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.18, 0.3, 0.36, 0.42, 0.48, 0.54),
+"transitions": PackedFloat32Array(1, 1, 4, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.381, -0.825, -0.813), Vector3(-0.381, 0.071, -0.981), Vector3(-0.381, 0.393, -1.322), Vector3(-0.381, 0.332, -1.08), Vector3(-0.381, 0.092, -0.815), Vector3(-0.381, -0.192, -0.598), Vector3(-0.381, -0.552, -0.491), Vector3(-0.381, -0.969, -0.502)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("arms/arm2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(4.38268e-08, 0, 0), Vector3(-0.562834, 7.38648e-08, -1.35156e-07)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("arms/arm3:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.12, 0.18, 0.3, 0.36, 0.42, 0.48, 0.54),
+"transitions": PackedFloat32Array(1, 1, 4, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.381, -0.825, -0.813), Vector3(0.381, 0.0714263, -0.98052), Vector3(0.381, 0.393418, -1.32187), Vector3(0.381, 0.331836, -1.0803), Vector3(0.381, 0.0921958, -0.815208), Vector3(0.381, -0.191972, -0.59814), Vector3(0.381, -0.551833, -0.491357), Vector3(0.381, -0.969264, -0.50157)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("arms/arm3:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 3.86374),
+"update": 0,
+"values": [Vector3(2.19135e-08, 0, 0), Vector3(-0.562834, 7.38648e-08, -1.35156e-07)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SubViewport/laptop_internals")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"sleepytime"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yvf1v"]
 _data = {
 "RESET": SubResource("Animation_jqw5q"),
+"panicc": SubResource("Animation_fxvci"),
 "type": SubResource("Animation_iu5jh")
 }
 
@@ -675,7 +791,7 @@ mesh = SubResource("ArrayMesh_mp8a7")
 skeleton = NodePath("")
 
 [node name="Cube_001" type="MeshInstance3D" parent="laptopgame"]
-transform = Transform3D(1, 0, 0, 0, 5.96046e-08, -1, 0, 1, 5.96046e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("1_xk1v2")
 mesh = SubResource("ArrayMesh_jf7ma")
 skeleton = NodePath("")
@@ -728,7 +844,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.156)
 mesh = SubResource("BoxMesh_wrt8d")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="armanims"]
-transform = Transform3D(0.21959, 0, 0.0968509, 0, 0.24, 0, -0.0968509, 0, 0.21959, 1.27532, -0.165, -0.156)
+transform = Transform3D(-0.125067, 0, 0.204837, 0, 0.24, 0, -0.204837, 0, -0.125067, 1.27532, -0.165, -0.156)
 mesh = ExtResource("8_nhqux")
 surface_material_override/0 = SubResource("ShaderMaterial_wqakq")
 
