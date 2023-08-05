@@ -2,6 +2,8 @@ extends Node3D
 
 
 @onready var chars:Array = get_children()
+@export var caughtpos := Vector3.ZERO
+@export var caughtrot := Vector3.ZERO
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,8 +20,11 @@ func send():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    for i in chars:
-        if i.flip_h:
-            i.position.x = clampf(i.position.x + (5 * delta), -20, 20)
-        else:
-            i.position.x = clampf(i.position.x - (5 * delta), -20, 20)
+    if not Engine.is_editor_hint():
+        for i in chars:
+            if i.flip_h:
+                i.position.x = clampf(i.position.x + (5 * delta), -20, 20)
+            else:
+                i.position.x = clampf(i.position.x - (5 * delta), -20, 20)
+    else:
+        pass
