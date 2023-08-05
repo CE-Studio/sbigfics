@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ctcwx2nn0hose"
+path="res://.godot/imported/Stereo Madness.wav-5352da476e9fe79e2a8260572f384b8f.sample"
+
+[deps]
+
+source_file="res://assets/sound/Music/Stereo Madness.wav"
+dest_files=["res://.godot/imported/Stereo Madness.wav-5352da476e9fe79e2a8260572f384b8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
