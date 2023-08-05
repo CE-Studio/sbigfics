@@ -9,6 +9,7 @@ var _lerpValue := 15.0
 @onready var text := $"Label"
 @onready var sprite := $"Sprite2D"
 @onready var _player := $"../../PlayerTower/BasePlayerSegment"
+@onready var button := $"TextureButton"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -19,7 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
     if targetY == 0.0:
-        var newTargetY:float = GROUND_Y - (ADVANCE_Y * _player._enemySegments.find(self))
+        var index = 0
+        for i in _player._enemySegments.size():
+            if _player._enemySegments[i] == self:
+                index = i
+        var newTargetY:float = GROUND_Y - (ADVANCE_Y * index)
         position = Vector2(position.x, lerp(position.y, newTargetY, _lerpValue * delta))
     else:
         position = Vector2(lerp(position.x, 256.0, _lerpValue * delta), lerp(position.y, targetY, _lerpValue * delta))
@@ -32,7 +37,5 @@ func set_value(newValue:int):
     text.text = str(newValue)
 
 
-func _on_input_event(viewport, event, shape_idx):
-    if event is InputEventMouseButton:
-        if event.pressed:
-            _player.try_segment(self)
+func _on_pressed():
+    _player.try_segment(self)
