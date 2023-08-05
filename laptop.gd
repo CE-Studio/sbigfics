@@ -75,7 +75,11 @@ func ticktype() -> void:
     $Sprite2D.frame = _tt % 3
 
 
+func sleepytime():
+    content.process_mode = Node.PROCESS_MODE_DISABLED
+
+
 func _loadgame():
     _games.shuffle()
     content.add_child(_games[0].instantiate())
-    #content.add_child(load("res://games/dash.tscn").instantiate())
+    #content.add_child(load("res://games/flappy.tscn").instantiate())

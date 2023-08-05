@@ -23,7 +23,8 @@ script/source = "extends RigidBody2D
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
     if Input.get_action_strength(\"mclick\") > 0.9:
-        linear_velocity.y = -200
+        gravity_scale = 3
+        linear_velocity.y = -400
         _s.frame = 1
     else:
         _s.frame = 0
@@ -238,7 +239,8 @@ position = Vector2(0, 500)
 shape = SubResource("RectangleShape2D_u1cva")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(-343, -278)
+position = Vector2(-343, 3)
+gravity_scale = 0.0
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
