@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=120 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://cpt725srhv22o" path="res://assets/sound/keys/keys-08.ogg" id="34_dt6ba"]
 [ext_resource type="AudioStream" uid="uid://gocfwav047yw" path="res://assets/sound/keys/keys-09.ogg" id="35_whfdy"]
 [ext_resource type="Texture2D" uid="uid://ct3xc30m3x7g1" path="res://assets/OtherChars/Fyrf.png" id="41_ouwye"]
+[ext_resource type="Script" path="res://hallcontrol.gd" id="41_qxbc8"]
 [ext_resource type="Texture2D" uid="uid://c3fg6y0djggv2" path="res://assets/OtherChars/Gamma.png" id="42_sl1td"]
 [ext_resource type="Texture2D" uid="uid://ylejlv2tuf73" path="res://assets/OtherChars/Rhare.png" id="43_3r3ir"]
 [ext_resource type="Texture2D" uid="uid://b30rbxe3vm4cy" path="res://assets/OtherChars/Rho.png" id="44_01up6"]
@@ -398,7 +399,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_h7vyf"]
 resource_name = "un panicc"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -406,10 +407,10 @@ tracks/0/path = NodePath("arms/arm2:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.381, -0.969, -0.502)]
+"values": [Vector3(-0.381, -0.969, -0.502), Vector3(-0.381, -1.27258, -0.366681), Vector3(-0.381, -0.825, -0.813)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -430,10 +431,10 @@ tracks/2/path = NodePath("arms/arm3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0.381, -0.969264, -0.50157)]
+"values": [Vector3(0.381, -0.969264, -0.50157), Vector3(0.381, -0.969264, -0.50157), Vector3(0.381, -0.929615, -0.453512), Vector3(0.381, -0.769798, -0.444551), Vector3(0.381, -0.597997, -0.440802), Vector3(0.381, -0.275488, -0.57997), Vector3(0.381, -0.116488, -0.645475), Vector3(0.381, 0.112875, -0.812929), Vector3(0.381, 0.254664, -0.956523), Vector3(0.381, 0.342454, -1.12897), Vector3(0.381, 0.425999, -1.28226), Vector3(0.381, 0.480272, -1.39981), Vector3(0.381, 0.484951, -1.41418), Vector3(0.381, -0.825, -0.813)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -454,7 +455,7 @@ tracks/4/path = NodePath("laptopgame/Cube_001:rotation")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.6),
+"times": PackedFloat32Array(0, 0.5, 1.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(3.14159, 0, 0), Vector3(3.14159, 0, 0), Vector3(1.5708, 0, 0)]
@@ -598,6 +599,13 @@ shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_m0py7")
 [sub_resource type="BoxMesh" id="BoxMesh_15ffi"]
 material = SubResource("ShaderMaterial_t1gta")
 size = Vector3(0.3, 15.54, 0.63)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_7xrcv"]
+material = SubResource("ShaderMaterial_tskbj")
+size = Vector3(30, 30, 0.165)
 subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
@@ -977,7 +985,7 @@ skeleton = NodePath("../MeshInstance3D6")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.78935, -9.443)
-mesh = SubResource("BoxMesh_buir2")
+mesh = SubResource("BoxMesh_7xrcv")
 skeleton = NodePath("../MeshInstance3D5")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
@@ -1001,53 +1009,61 @@ omni_range = 1856.04
 omni_attenuation = 0.196146
 
 [node name="hall" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26124, -1.03748, -5.25846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26124, 0.365026, -5.8748)
+script = ExtResource("41_qxbc8")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.39829, 0)
+[node name="fyrf" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2.39829, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_krcri")
 autoplay = "default"
 frame_progress = 0.926041
 
-[node name="AnimatedSprite3D2" type="AnimatedSprite3D" parent="hall"]
+[node name="gamma" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_rr37u")
 animation = &"talk"
 autoplay = "default"
 frame_progress = 0.997205
 
-[node name="AnimatedSprite3D3" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.347198, 0)
+[node name="rhare" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.347198, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_n7h2d")
 autoplay = "default"
 frame_progress = 0.864888
 
-[node name="AnimatedSprite3D4" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.612823, 0)
+[node name="rho" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.612823, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_ekvvg")
 animation = &"talk"
 autoplay = "default"
 frame_progress = 0.576677
 
-[node name="AnimatedSprite3D5" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.415253, 0)
+[node name="sarah" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.415253, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_vmtw0")
 animation = &"talk"
 autoplay = "default"
 frame_progress = 0.185688
 
-[node name="AnimatedSprite3D6" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17769, 0)
+[node name="seanna ruby" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -1.17769, 0)
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_kbde8")
 animation = &"talk1"
 autoplay = "default"
 frame_progress = 0.26812
 
+[node name="halltime" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+autostart = true
+
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_exited"]
+[connection signal="timeout" from="halltime" to="hall" method="send"]
