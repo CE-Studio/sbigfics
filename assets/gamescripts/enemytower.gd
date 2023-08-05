@@ -20,3 +20,7 @@ func set_value(newValue:int):
     if _text == null:
         _text = $"Label"
     _text.text = str(newValue)
+
+
+func _on_input_event(viewport, event, shape_idx):
+    print(event)

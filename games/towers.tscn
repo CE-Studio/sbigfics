@@ -20,7 +20,7 @@ const MIN_SEGMENTS := 3
 var _enemySegments := []
 var _currentValue := 0
 @onready var _text := $\"Label\"
-@onready var _enemyTower := $\"../EnemyTower\"
+@onready var _enemyTower := $\"../../EnemyTower\"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -29,6 +29,7 @@ func _ready():
     segmentCount = clampi(segmentCount, MIN_SEGMENTS, _enemyTower.get_child_count())
     for i in range(_enemyTower.get_child_count() - 1, segmentCount - 1, -1):
         _enemyTower.get_child(i).queue_free()
+        _enemyTower.remove_child(_enemyTower.get_child(i))
     _currentValue = randi_range(MIN_STARTING_VALUE, MAX_STARTING_VALUE)
     for i in _enemyTower.get_child_count():
         _enemySegments.append(_enemyTower.get_child(i))
@@ -39,7 +40,7 @@ func _ready():
     var _lastTotal = 0
     var _lastTotal2 = 0
     for i in _valueArray.size():
-        var _newValue = randi_range(_lastTotal2, _tempTotal)
+        var _newValue = randi_range(_lastTotal2 + 1, _tempTotal - 1)
         var _newIndex = clamp(randi_range(0, i + 3), 0, _valueArray.size() - 1)
         while _valueArray[_newIndex] > 0:
             _newIndex = clamp(randi_range(0, i + 3), 0, _valueArray.size() - 1)
@@ -72,16 +73,18 @@ position = Vector2(0, 110)
 texture = SubResource("PlaceholderTexture2D_x5nd2")
 centered = false
 
-[node name="BasePlayerSegment" type="RigidBody2D" parent="."]
+[node name="PlayerTower" type="Node2D" parent="."]
+
+[node name="BasePlayerSegment" type="RigidBody2D" parent="PlayerTower"]
 position = Vector2(256, 812)
 freeze = true
 script = SubResource("GDScript_jmv1y")
 
-[node name="Sprite2D" type="Sprite2D" parent="BasePlayerSegment"]
+[node name="Sprite2D" type="Sprite2D" parent="PlayerTower/BasePlayerSegment"]
 modulate = Color(0, 1, 1, 1)
 texture = ExtResource("2_sxop8")
 
-[node name="Label" type="Label" parent="BasePlayerSegment"]
+[node name="Label" type="Label" parent="PlayerTower/BasePlayerSegment"]
 offset_left = -113.0
 offset_top = -7.0
 offset_right = 116.0
@@ -92,7 +95,7 @@ text = "1234"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BasePlayerSegment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTower/BasePlayerSegment"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
@@ -289,3 +292,12 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment8"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
+
+[connection signal="input_event" from="EnemyTower/EnemySegment" to="EnemyTower/EnemySegment" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment2" to="EnemyTower/EnemySegment2" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment3" to="EnemyTower/EnemySegment3" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment4" to="EnemyTower/EnemySegment4" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment5" to="EnemyTower/EnemySegment5" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment6" to="EnemyTower/EnemySegment6" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment7" to="EnemyTower/EnemySegment7" method="_on_input_event"]
+[connection signal="input_event" from="EnemyTower/EnemySegment8" to="EnemyTower/EnemySegment8" method="_on_input_event"]
