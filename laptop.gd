@@ -6,6 +6,7 @@ var _bbase:PackedScene = preload("res://assets/ip/ipbutton.tscn")
 @onready var cur:Sprite2D = $TextureRect2
 @onready var content:Node3D = $screentree
 @onready var desk:Panel = $desktop
+@onready var sleepscreen:Panel = $desktop2
 static var instance:Laptop
 static var awake := true
 
@@ -78,6 +79,16 @@ func ticktype() -> void:
 
 func sleepytime():
     content.process_mode = Node.PROCESS_MODE_DISABLED
+    desk.visible = false
+    sleepscreen.visible = true
+    awake = false
+
+
+func awaken():
+    content.process_mode = Node.PROCESS_MODE_INHERIT
+    desk.visible = true
+    sleepscreen.visible = false
+    awake = true
 
 
 func _loadgame():

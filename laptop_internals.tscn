@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c6pibdssjb5sh"]
+[gd_scene load_steps=23 format=3 uid="uid://c6pibdssjb5sh"]
 
 [ext_resource type="Script" path="res://laptop.gd" id="1_044e4"]
 [ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cqpc7htpa4tt6" path="res://assets/scrollsprites/grabh.svg" id="9_vb0q7"]
 [ext_resource type="Texture2D" uid="uid://cii11e2hys4ko" path="res://assets/typing.svg" id="11_dgxmv"]
 [ext_resource type="Texture2D" uid="uid://cmpfnkr8cb1t6" path="res://assets/cur.svg" id="11_tfk6v"]
+[ext_resource type="Texture2D" uid="uid://bd4cr7dtoy13a" path="res://assets/loading.svg" id="11_yeqm3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
 bg_color = Color(0.972549, 0.952941, 0.937255, 1)
@@ -60,6 +61,23 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_oyh4f")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_uutel")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_3h4m3")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_iiess")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u2a0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_ljwk3"]
+script/source = "extends Sprite2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+    pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+    rotation += delta*6
+"
 
 [node name="laptop_internals" type="Node3D"]
 script = ExtResource("1_044e4")
@@ -125,3 +143,32 @@ hframes = 3
 [node name="TextureRect2" type="Sprite2D" parent="."]
 scale = Vector2(1.445, 1.445)
 texture = ExtResource("11_tfk6v")
+
+[node name="desktop2" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -402.0
+offset_right = 512.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2u2a0")
+
+[node name="Label" type="Label" parent="desktop2"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 216.0
+offset_right = 1006.0
+offset_bottom = 356.0
+theme_override_font_sizes/font_size = 100
+text = "Waking from sleep..."
+
+[node name="Sprite2D" type="Sprite2D" parent="desktop2"]
+position = Vector2(509, 516)
+texture = ExtResource("11_yeqm3")
+script = SubResource("GDScript_ljwk3")

@@ -21,6 +21,8 @@ func _input(event: InputEvent) -> void:
         if event.keycode == KEY_SPACE:
             print("stahppd")
             $"../../../armanims".play("panicc")
+        if event.keycode == KEY_W:
+            $"../../../armanims".play("un panicc")
 
 
 func _on_mouse_entered() -> void:
