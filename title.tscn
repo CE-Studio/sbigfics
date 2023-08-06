@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=61 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b7edpecwt846n" path="res://assets/TextSprites/Credits2.png" id="22_mkd72"]
 [ext_resource type="Texture2D" uid="uid://b3lim4byljv4n" path="res://assets/TextSprites/Credits3.png" id="23_vfodt"]
 [ext_resource type="Texture2D" uid="uid://cw1fsd3wogili" path="res://assets/darken.svg" id="27_2jivj"]
+[ext_resource type="AudioStream" uid="uid://2bxsmib8e14e" path="res://assets/sound/Music/title.ogg" id="28_awhgc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -210,6 +211,14 @@ shader = ExtResource("4_1v7oa")
 shader_parameter/Tex1 = ExtResource("21_41gpk")
 shader_parameter/Tex2 = ExtResource("22_mkd72")
 shader_parameter/Tex3 = ExtResource("23_vfodt")
+
+[sub_resource type="GDScript" id="GDScript_pkm6c"]
+script/source = "extends AudioStreamPlayer
+
+
+func _on_finished():
+    play()
+"
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_pdbem")
@@ -495,8 +504,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back to main menu"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_awhgc")
+autoplay = true
+script = SubResource("GDScript_pkm6c")
+
 [connection signal="pressed" from="Control/Buttons/TextureButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/Buttons/TextureButton2" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/Buttons/TextureButton3" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Control/Options/OptionsControls/Button" to="." method="_on_return_to_menu"]
 [connection signal="pressed" from="Control/Credits/Sprite2D/VBoxContainer/Button" to="." method="_on_return_to_menu"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
