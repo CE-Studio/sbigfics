@@ -16,8 +16,13 @@ func _on_play_pressed() -> void:
 
 
 func _on_settings_pressed() -> void:
-    pass # Replace with function body.
+    $"Control/Options".visible = true
 
 
 func _on_credits_pressed() -> void:
-    pass # Replace with function body.
+    $"Control/Credits".visible = true
+
+
+func _on_return_to_menu() -> void:
+    $"Control/Options".visible = false
+    $"Control/Credits".visible = false
