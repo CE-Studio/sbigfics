@@ -1,4 +1,4 @@
-[gd_scene load_steps=150 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=153 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -51,6 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://8mupcpi72kqa" path="res://assets/Arrows.png" id="48_gckew"]
 [ext_resource type="AudioStream" uid="uid://3oqpvkubkvfx" path="res://assets/sound/door.mp3" id="49_0hn4a"]
 [ext_resource type="Script" path="res://doorcontrol.gd" id="51_o1bsb"]
+[ext_resource type="Texture2D" uid="uid://bs63vrs7wqdo3" path="res://assets/time.svg" id="52_dvdoy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2tu6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -1230,8 +1231,6 @@ _data = {
 "shut": SubResource("Animation_gor3t")
 }
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_pg536"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vetf5"]
 atlas = ExtResource("48_gckew")
 region = Rect2(0, 128, 128, 128)
@@ -1329,6 +1328,33 @@ size = Vector3(1.065, 4.27, 1)
 streams_count = 1
 stream_0/stream = ExtResource("49_0hn4a")
 stream_0/weight = 1.0
+
+[sub_resource type="GDScript" id="GDScript_jqwbu"]
+script/source = "extends Sprite2D
+
+
+@onready var prog := $\"../../ProgressBar\"
+@onready var time := $\"../../../overalltime\"
+
+
+func _process(delta: float) -> void:
+    rotation += delta * 5
+    prog.value = (time.time_left / time.wait_time) * 100
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sbf1"]
+bg_color = Color(0.270588, 0.0509804, 0, 0.631373)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uxig0"]
+bg_color = Color(0.498039, 1, 0, 0.658824)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="Node3D" type="Node3D"]
 
@@ -1613,7 +1639,6 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="door"]
-stream = SubResource("AudioStreamPolyphonic_pg536")
 
 [node name="cur" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -1634,6 +1659,35 @@ shape = SubResource("BoxShape3D_id4e2")
 [node name="halldoorsound" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_hcjp7")
 volume_db = -10.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer2/Control"]
+position = Vector2(26, 25)
+texture = ExtResource("52_dvdoy")
+script = SubResource("GDScript_jqwbu")
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_7sbf1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_uxig0")
+show_percentage = false
+
+[node name="overalltime" type="Timer" parent="."]
+wait_time = 180.0
+autostart = true
 
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
