@@ -14,6 +14,8 @@ func _on_input_event(camera: Node, event: InputEvent, position: Vector3, normal:
     var ev:InputEvent = event.duplicate()
     ev.position = pos
     _vp.push_input(ev)
+    if ev is InputEventMouseMotion:
+        $"../../../armanims/mouse/MeshInstance3D2".position = (Vector3(remap_range(ev.position.x, 0, 1024, -0.5, 0.5), 0, remap_range(ev.position.y, 0, 910, -0.5, 0.5)))
 
 
 func _on_mouse_entered() -> void:

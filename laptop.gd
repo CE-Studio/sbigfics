@@ -93,5 +93,5 @@ func awaken():
 
 func _loadgame():
     _games.shuffle()
-    #content.add_child(_games[0].instantiate())
-    content.add_child(load("res://games/towers.tscn").instantiate())
+    content.add_child(_games[0].instantiate())
+    #content.add_child(load("res://games/towers.tscn").instantiate())

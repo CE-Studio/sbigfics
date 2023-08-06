@@ -1,9 +1,10 @@
-[gd_scene load_steps=127 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=149 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
 [ext_resource type="Texture2D" uid="uid://qrclwkj7gm41" path="res://assets/PsiArm.png" id="3_630ma"]
 [ext_resource type="Texture2D" uid="uid://c651pynn2j5jj" path="res://assets/TextSprites/Score.png" id="3_n0drv"]
+[ext_resource type="Script" path="res://laptoplid.gd" id="4_ajavb"]
 [ext_resource type="PackedScene" uid="uid://b2p12h3jb5gm8" path="res://assets/score/snumber.tscn" id="4_orngd"]
 [ext_resource type="Script" path="res://simpleSpriteAnim.gd" id="4_tw1lo"]
 [ext_resource type="Script" path="res://assets/score/score.gd" id="4_wmwgu"]
@@ -47,6 +48,9 @@
 [ext_resource type="Texture2D" uid="uid://b30rbxe3vm4cy" path="res://assets/OtherChars/Rho.png" id="44_01up6"]
 [ext_resource type="Texture2D" uid="uid://ck8fefbm2aejq" path="res://assets/OtherChars/Sarah.png" id="45_qh6dk"]
 [ext_resource type="Texture2D" uid="uid://rlmtjrp4c5jp" path="res://assets/OtherChars/Seanna+Ruby.png" id="46_di2d3"]
+[ext_resource type="Texture2D" uid="uid://8mupcpi72kqa" path="res://assets/Arrows.png" id="48_gckew"]
+[ext_resource type="AudioStream" uid="uid://3oqpvkubkvfx" path="res://assets/sound/door.mp3" id="49_0hn4a"]
+[ext_resource type="Script" path="res://doorcontrol.gd" id="51_o1bsb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w2tu6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -163,6 +167,9 @@ shader_parameter/Texture2DParameter = SubResource("ViewportTexture_iosy1")
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6gln"]
 size = Vector3(1.43064, 0.0386021, 1.13655)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf02n"]
+size = Vector3(2.15, 0.72, 0.265)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex2l0"]
 atlas = ExtResource("3_n0drv")
 region = Rect2(0, 0, 256, 128)
@@ -278,6 +285,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector3(-0.296706, 2.05822e-07, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("laptopgame/Cube_001/StaticBody3D2:input_ray_pickable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("laptopgame/Cube_001/StaticBody3D2:mode")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fxvci"]
 resource_name = "panicc"
@@ -370,6 +401,44 @@ tracks/6/keys = {
 "args": [],
 "method": &"stop"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("laptopgame/Cube_001/StaticBody3D2:input_ray_pickable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("laptopgame/Cube_001/StaticBody3D2")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_mouse_exited"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("laptopgame/Cube_001/StaticBody3D2:mode")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_iu5jh"]
@@ -511,6 +580,44 @@ tracks/5/keys = {
 "args": [-1],
 "method": &"start"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("laptopgame/Cube_001/StaticBody3D2:input_ray_pickable")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("laptopgame/Cube_001/StaticBody3D2")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_mouse_exited"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("laptopgame/Cube_001/StaticBody3D2:mode")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_o7y7f"]
@@ -954,6 +1061,225 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="BoxMesh" id="BoxMesh_j360q"]
+material = SubResource("ShaderMaterial_t1gta")
+size = Vector3(4.94, 10.535, 0.275)
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="Animation" id="Animation_gor3t"]
+resource_name = "shut"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.3, 2.7, 14, 17.3),
+"transitions": PackedFloat32Array(1, 1, 2.82842, 2.07053),
+"update": 0,
+"values": [Vector3(0, 1.89014, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.89014, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("49_0hn4a")
+}],
+"times": PackedFloat32Array(2.7)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../hall:doorclosed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5, 16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../StaticBody3D:input_ray_pickable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 24.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../StaticBody3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_mouse_exited"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8q1cg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.89014, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../hall:doorclosed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../StaticBody3D:input_ray_pickable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ih7e1"]
+_data = {
+"RESET": SubResource("Animation_8q1cg"),
+"shut": SubResource("Animation_gor3t")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vetf5"]
+atlas = ExtResource("48_gckew")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldo4k"]
+atlas = ExtResource("48_gckew")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgixs"]
+atlas = ExtResource("48_gckew")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sf12h"]
+atlas = ExtResource("48_gckew")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe4ct"]
+atlas = ExtResource("48_gckew")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpay0"]
+atlas = ExtResource("48_gckew")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf3dk"]
+atlas = ExtResource("48_gckew")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch0ap"]
+atlas = ExtResource("48_gckew")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrkr0"]
+atlas = ExtResource("48_gckew")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la25n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vetf5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldo4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgixs")
+}],
+"loop": true,
+"name": &"close",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sf12h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe4ct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpay0")
+}],
+"loop": true,
+"name": &"door",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf3dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch0ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrkr0")
+}],
+"loop": true,
+"name": &"point",
+"speed": 3.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_3qtyp"]
+script/source = "extends AnimatedSprite2D
+
+
+func _input(event: InputEvent) -> void:
+    if event is InputEventMouseMotion:
+        position = event.position
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_id4e2"]
+size = Vector3(1.065, 4.27, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hcjp7"]
+streams_count = 1
+stream_0/stream = ExtResource("49_0hn4a")
+stream_0/weight = 1.0
+
 [node name="Node3D" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -991,6 +1317,14 @@ script = ExtResource("5_1j3bq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92994e-08, -0.659334)
 shape = SubResource("BoxShape3D_b6gln")
 
+[node name="StaticBody3D2" type="StaticBody3D" parent="laptopgame/Cube_001"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.135501, -1.48042)
+script = ExtResource("4_ajavb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="laptopgame/Cube_001/StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.445321, 2.38419e-07)
+shape = SubResource("BoxShape3D_wf02n")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
 size = Vector2i(1024, 1024)
@@ -1026,10 +1360,20 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.300029, -0.156)
 mesh = SubResource("BoxMesh_wrt8d")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="armanims"]
-transform = Transform3D(-0.125067, 0, 0.204837, 0, 0.24, 0, -0.204837, 0, -0.125067, 1.27532, -0.165, -0.156)
+[node name="mouse" type="Node3D" parent="armanims"]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 1.48, -0.165, 0.489)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="armanims/mouse"]
+transform = Transform3D(0.989016, 0, 0.147809, 0, 1, 0, -0.147809, 0, 0.989016, 0, 0, 0)
 mesh = ExtResource("8_nhqux")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_wqakq")
+
+[node name="arm4" type="Sprite3D" parent="armanims/mouse/MeshInstance3D2"]
+transform = Transform3D(1.12791, -0.25001, -0.164956, 0.288844, 1.07798, 0.341198, 0.0792772, -0.370596, 1.10375, -1.812, 0.328, 2.875)
+texture = ExtResource("3_630ma")
+hframes = 2
+script = ExtResource("4_tw1lo")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="armanims"]
 transform = Transform3D(-0.416891, 0, 0.68279, 0, 0.8, 0, -0.68279, 0, -0.416891, 2.0651, -0.0633265, -0.156)
@@ -1066,12 +1410,6 @@ script = ExtResource("4_tw1lo")
 
 [node name="arm3" type="Sprite3D" parent="arms"]
 transform = Transform3D(0.28, 0, 0, 0, 0.28, -6.13578e-09, 0, 6.13578e-09, 0.28, 0.381, -0.825, -0.813)
-texture = ExtResource("3_630ma")
-hframes = 2
-script = ExtResource("4_tw1lo")
-
-[node name="arm4" type="Sprite3D" parent="arms"]
-transform = Transform3D(0.328415, -0.0879985, 0, 0.0879985, 0.328415, 0, 0, 0, 0.34, 1.451, -1.055, -1.188)
 texture = ExtResource("3_630ma")
 hframes = 2
 script = ExtResource("4_tw1lo")
@@ -1210,8 +1548,50 @@ autostart = true
 wait_time = 8.0
 one_shot = true
 
+[node name="door" type="Node3D" parent="."]
+transform = Transform3D(-0.313943, 0, 0.949442, 0, 1, 0, -0.949442, 0, -0.313943, 7.89745, 0, -1.6904)
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41036, -0.443718, 0)
+cast_shadow = 0
+mesh = SubResource("BoxMesh_j360q")
+skeleton = NodePath("../MeshInstance3D6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="door"]
+libraries = {
+"": SubResource("AnimationLibrary_ih7e1")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="door"]
+
+[node name="cur" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_la25n")
+animation = &"door"
+frame_progress = 0.00242159
+centered = false
+script = SubResource("GDScript_3qtyp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.63479, 0.877463, -1.04696)
+script = ExtResource("51_o1bsb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.444148, 0.847755, 0)
+shape = SubResource("BoxShape3D_id4e2")
+
+[node name="halldoorsound" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_hcjp7")
+volume_db = -10.0
+
 [connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_input_event"]
 [connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="laptopgame/Cube_001/StaticBody3D" to="laptopgame/Cube_001/StaticBody3D" method="_on_mouse_exited"]
+[connection signal="input_event" from="laptopgame/Cube_001/StaticBody3D2" to="laptopgame/Cube_001/StaticBody3D2" method="_on_input_event"]
+[connection signal="mouse_entered" from="laptopgame/Cube_001/StaticBody3D2" to="laptopgame/Cube_001/StaticBody3D2" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="laptopgame/Cube_001/StaticBody3D2" to="laptopgame/Cube_001/StaticBody3D2" method="_on_mouse_exited"]
 [connection signal="timeout" from="halltime" to="hall" method="send"]
 [connection signal="timeout" from="awakentime" to="SubViewport/laptop_internals" method="awaken"]
+[connection signal="input_event" from="StaticBody3D" to="StaticBody3D" method="_on_input_event"]
+[connection signal="mouse_entered" from="StaticBody3D" to="StaticBody3D" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="StaticBody3D" to="StaticBody3D" method="_on_mouse_exited"]

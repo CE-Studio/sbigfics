@@ -4,6 +4,7 @@ extends Node3D
 @onready var chars:Array = get_children()
 @export var caughtpos := Vector3.ZERO
 @export var caughtrot := Vector3.ZERO
+@export var doorclosed := false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,8 +15,9 @@ func _ready() -> void:
 func send():
     var h = chars.pick_random()
     h.flip_h = !h.flip_h
-    $"../halltime".wait_time = randf_range(5, 20)
+    $"../halltime".wait_time = randf_range(10, 40)
     $"../halltime".start()
+    $"../halldoorsound".play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
