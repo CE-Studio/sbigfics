@@ -84,6 +84,10 @@ func sleepytime():
     awake = false
 
 
+func caught():
+    process_mode = Node.PROCESS_MODE_DISABLED
+
+
 func awaken():
     content.process_mode = Node.PROCESS_MODE_INHERIT
     desk.visible = true

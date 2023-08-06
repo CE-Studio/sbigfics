@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://simpleRetexture.gd" id="15_7e7si"]
 [ext_resource type="Texture2D" uid="uid://dscqwbnmpbic1" path="res://assets/TextSprites/Play1.png" id="15_g1ig0"]
 [ext_resource type="Texture2D" uid="uid://m03gxgjmsqx5" path="res://assets/TextSprites/Play2.png" id="16_445em"]
-[ext_resource type="Texture2D" uid="uid://dxc04jyfiks5x" path="res://assets/Title2.png" id="16_f4o7e"]
+[ext_resource type="Texture2D" uid="uid://trl4kghqu4y1" path="res://assets/Title2.png" id="16_f4o7e"]
 [ext_resource type="Texture2D" uid="uid://bwfmqwohdclxj" path="res://assets/TextSprites/Play3.png" id="17_5vb2f"]
 [ext_resource type="Texture2D" uid="uid://8v322qagfrlm" path="res://assets/TextSprites/Options1.png" id="18_fcgv7"]
 [ext_resource type="Texture2D" uid="uid://ecwadr8nghnc" path="res://assets/TextSprites/Options2.png" id="19_uk8ru"]
@@ -211,7 +211,7 @@ shader_parameter/Tex1 = ExtResource("21_41gpk")
 shader_parameter/Tex2 = ExtResource("22_mkd72")
 shader_parameter/Tex3 = ExtResource("23_vfodt")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D2" type="Node3D"]
 script = ExtResource("1_pdbem")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -237,6 +237,7 @@ surface_material_override/0 = ExtResource("1_lpgby")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -2.39188, 1.50988, -3.32205)
+current = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, 0.25563, 0.663833, -2.36366)

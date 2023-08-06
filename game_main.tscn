@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=159 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://ylejlv2tuf73" path="res://assets/OtherChars/Rhare.png" id="43_3r3ir"]
 [ext_resource type="Texture2D" uid="uid://b30rbxe3vm4cy" path="res://assets/OtherChars/Rho.png" id="44_01up6"]
 [ext_resource type="Texture2D" uid="uid://ck8fefbm2aejq" path="res://assets/OtherChars/Sarah.png" id="45_qh6dk"]
+[ext_resource type="Texture2D" uid="uid://drus8am8adayo" path="res://assets/OtherChars/Fletch.png" id="45_yrahi"]
 [ext_resource type="Texture2D" uid="uid://rlmtjrp4c5jp" path="res://assets/OtherChars/Seanna+Ruby.png" id="46_di2d3"]
 [ext_resource type="Texture2D" uid="uid://8mupcpi72kqa" path="res://assets/Arrows.png" id="48_gckew"]
 [ext_resource type="AudioStream" uid="uid://3oqpvkubkvfx" path="res://assets/sound/door.mp3" id="49_0hn4a"]
@@ -310,6 +311,30 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("hall:caughtpos")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("hall:caughtrot")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_o7y7f"]
 resource_name = "caught"
@@ -336,6 +361,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.296706, 2.05822e-07, 0), Vector3(0, -0.767945, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hall:caughtpos")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.145, -2.398, 3.045)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hall:caughtrot")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.325, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_fxvci"]
@@ -811,7 +860,7 @@ subdivide_depth = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_7xrcv"]
 material = SubResource("ShaderMaterial_tskbj")
-size = Vector3(30, 30, 0.165)
+size = Vector3(30, 52.035, 0.165)
 subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
@@ -892,6 +941,47 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vs7ge")
+}],
+"loop": true,
+"name": &"talk",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xik5i"]
+atlas = ExtResource("45_yrahi")
+region = Rect2(0, 0, 1158, 1758)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcaek"]
+atlas = ExtResource("45_yrahi")
+region = Rect2(1158, 0, 1158, 1758)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmxpm"]
+atlas = ExtResource("45_yrahi")
+region = Rect2(1158, 0, 1158, 1758)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_65h34"]
+atlas = ExtResource("45_yrahi")
+region = Rect2(2316, 0, 1158, 1758)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1emc4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xik5i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hcaek")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmxpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_65h34")
 }],
 "loop": true,
 "name": &"talk",
@@ -1064,7 +1154,7 @@ animations = [{
 
 [sub_resource type="BoxMesh" id="BoxMesh_j360q"]
 material = SubResource("ShaderMaterial_t1gta")
-size = Vector3(4.94, 10.535, 0.275)
+size = Vector3(4.94, 12.88, 0.275)
 subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
@@ -1360,6 +1450,7 @@ corner_radius_bottom_left = 4
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, -6.01766e-08, 1.96829e-07, 0, 0.956305, 0.292372, -2.05822e-07, -0.292372, 0.956305, 0.0235617, 0.966196, 1.88636)
+current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4e7ou")
@@ -1499,7 +1590,7 @@ cast_shadow = 0
 mesh = SubResource("BoxMesh_buir2")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15691, 12.8861, -1.48451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.15691, 14.0449, -1.48451)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_buir2")
 skeleton = NodePath("../MeshInstance3D5")
@@ -1538,7 +1629,7 @@ mesh = SubResource("BoxMesh_7xrcv")
 skeleton = NodePath("../MeshInstance3D5")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5.43799, 5, -1.443)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 5.43799, 6.1588, -1.443)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_syu03")
 skeleton = NodePath("../MeshInstance3D6")
@@ -1564,7 +1655,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.26124, 0.365026, -5.8748)
 script = ExtResource("41_qxbc8")
 
 [node name="fyrf" type="AnimatedSprite3D" parent="hall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2.39829, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -2.398, 0)
 flip_h = true
 pixel_size = 0.008
 sprite_frames = SubResource("SpriteFrames_krcri")
@@ -1579,6 +1670,13 @@ sprite_frames = SubResource("SpriteFrames_rr37u")
 animation = &"talk"
 autoplay = "default"
 frame_progress = 0.997205
+
+[node name="fletch" type="AnimatedSprite3D" parent="hall"]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 20, -0.352274, 0)
+flip_h = true
+pixel_size = 0.008
+sprite_frames = SubResource("SpriteFrames_1emc4")
+autoplay = "default"
 
 [node name="rhare" type="AnimatedSprite3D" parent="hall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.347198, 0)
