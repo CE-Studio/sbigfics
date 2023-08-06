@@ -1,0 +1,275 @@
+[gd_scene load_steps=10 format=3 uid="uid://0a7maxe3kwxk"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_mg03s"]
+[ext_resource type="Script" path="res://assets/gamescripts/wordobj.gd" id="2_m1stx"]
+[ext_resource type="Texture2D" uid="uid://credmeqogbaf6" path="res://assets/gamesprites/wordsbacking.svg" id="2_mogi7"]
+[ext_resource type="FontFile" uid="uid://dshlyps0l23xy" path="res://assets/fon/PUSAB___.otf" id="3_4l6bk"]
+[ext_resource type="AudioStream" uid="uid://dsxgrovb0byjx" path="res://assets/sound/wordsWin.mp3" id="5_3icww"]
+[ext_resource type="AudioStream" uid="uid://cu4pifgjyjjgt" path="res://assets/sound/wordsFail.mp3" id="6_lvc3b"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x5nd2"]
+size = Vector2(1024, 804)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bvp1c"]
+size = Vector2(349, 142)
+
+[sub_resource type="GDScript" id="GDScript_7qb05"]
+script/source = "extends Sprite2D
+
+
+const _rhymesEasy1 := [\"can\", \"man\", \"ban\", \"stan\", \"pan\"]
+const _rhymesEasy2 := [\"peg\", \"leg\", \"keg\", \"beg\", \"egg\"]
+const _rhymesEasy3 := [\"far\", \"star\", \"car\", \"bar\", \"tar\"]
+const _rhymesEasy4 := [\"bun\", \"sun\", \"fun\", \"done\", \"one\"]
+const _dudsEasy := [\"dog\", \"cat\", \"ham\", \"stud\", \"fat\", \"all\", \"lip\", \"sip\", \"from\", \"to\", \"down\", \"up\", \"left\", \"right\"]
+
+const _rhymesNormal1 := [\"error\", \"concur\", \"sulfur\", \"blur\", \"stir\"]
+const _rhymesNormal2 := [\"horse\", \"course\", \"force\", \"remorse\", \"source\"]
+const _rhymesNormal3 := [\"zone\", \"known\", \"shown\", \"alone\", \"throne\"]
+const _rhymesNormal4 := [\"rhyme\", \"time\", \"thyme\", \"sublime\", \"climb\"]
+const _dudsNormal := [\"function\", \"lizard\", \"mute\", \"feign\", \"wallet\", \"syrup\", \"monitor\", \"script\", \"help\", \"audio\", \"north\", \"south\", \"packed\", \"lesser\"]
+
+const _rhymesHard1 := [\"prominent\", \"predominant\", \"continent\", \"consonant\", \"armament\"]
+const _rhymesHard2 := [\"thesaurus\", \"chorus\", \"enormous\", \"amorphous\", \"torus\"]
+const _rhymesHard3 := [\"elephant\", \"relevant\", \"elegant\", \"intelligent\", \"element\"]
+const _rhymesHard4 := [\"igneous\", \"villainous\", \"insignias\", \"amphibious\", \"serious\"]
+const _dudsHard := [\"allocate\", \"electric\", \"muster\", \"waiting\", \"cancelled\", \"vitamin\", \"recreation\", \"hardwood\", \"canteloupe\", \"controller\", \"transport\", \"outdoors\", \"polishing\"]
+
+const SCORE_SCALE = 0.0015
+
+var _canPick = true
+
+
+func _ready():
+    var difficulty = clamp(floori(Game.score * SCORE_SCALE), 0, 2)
+    var index1 = randi_range(0, 4)
+    var index2 = randi_range(0, 4)
+    while index2 == index1:
+        index2 = randi_range(0, 4)
+    var duds
+    match difficulty:
+        0:
+            duds = _dudsEasy
+        1:
+            duds = _dudsNormal
+        _:
+            duds = _dudsHard
+    var words
+    var arrayIndex = randi_range(0, 3)
+    match difficulty:
+        0:
+            match arrayIndex:
+                0: words = _rhymesEasy1
+                1: words = _rhymesEasy2
+                2: words = _rhymesEasy3
+                3: words = _rhymesEasy4
+        1:
+            match arrayIndex:
+                0: words = _rhymesNormal1
+                1: words = _rhymesNormal2
+                2: words = _rhymesNormal3
+                3: words = _rhymesNormal4
+        _:
+            match arrayIndex:
+                0: words = _rhymesHard1
+                1: words = _rhymesHard2
+                2: words = _rhymesHard3
+                3: words = _rhymesHard4
+    var dudIndex1 = randi_range(0, duds.size() - 1)
+    var dudIndex2 = randi_range(0, duds.size() - 1)
+    var dudIndex3 = randi_range(0, duds.size() - 1)
+    var dudIndex4 = randi_range(0, duds.size() - 1)
+    while dudIndex2 == dudIndex1:
+        dudIndex2 = randi_range(0, duds.size() - 1)
+    while dudIndex3 == dudIndex2 || dudIndex3 == dudIndex1:
+        dudIndex3 = randi_range(0, duds.size() - 1)
+    while dudIndex4 == dudIndex3 || dudIndex4 == dudIndex2 || dudIndex4 == dudIndex1:
+        dudIndex4 = randi_range(0, duds.size() - 1)
+    $\"ChosenWord\".text = words[index1]
+    $\"../Words/TrueWord/Label\".text = words[index2]
+    $\"../Words/Word/Label\".text = duds[dudIndex1]
+    $\"../Words/Word2/Label\".text = duds[dudIndex2]
+    $\"../Words/Word3/Label\".text = duds[dudIndex3]
+    $\"../Words/Word4/Label\".text = duds[dudIndex4]
+
+
+func on_wrong_word():
+    if _canPick:
+        _canPick = false
+        Game.score -= 50
+        $\"../Lose\".play()
+
+
+func on_correct_word():
+    if _canPick:
+        _canPick = false
+        Game.score += 100
+        $\"../Win\".play()
+
+
+func _on_audio_finished():
+    $\"..\".endgame()
+"
+
+[node name="game" type="Node3D"]
+script = ExtResource("1_mg03s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 110)
+texture = SubResource("PlaceholderTexture2D_x5nd2")
+centered = false
+
+[node name="Words" type="Node2D" parent="."]
+
+[node name="Word" type="CharacterBody2D" parent="Words"]
+position = Vector2(339, 714)
+script = ExtResource("2_m1stx")
+
+[node name="Label" type="Label" parent="Words/Word"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 349.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 70
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Words/Word"]
+offset_right = 349.0
+offset_bottom = 142.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Words/Word"]
+position = Vector2(174.5, 71)
+shape = SubResource("RectangleShape2D_bvp1c")
+
+[node name="Word2" type="CharacterBody2D" parent="Words"]
+position = Vector2(339, 714)
+script = ExtResource("2_m1stx")
+
+[node name="Label" type="Label" parent="Words/Word2"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 349.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 70
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Words/Word2"]
+offset_right = 349.0
+offset_bottom = 142.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Words/Word2"]
+position = Vector2(174.5, 71)
+shape = SubResource("RectangleShape2D_bvp1c")
+
+[node name="Word3" type="CharacterBody2D" parent="Words"]
+position = Vector2(339, 714)
+script = ExtResource("2_m1stx")
+
+[node name="Label" type="Label" parent="Words/Word3"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 349.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 70
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Words/Word3"]
+offset_right = 349.0
+offset_bottom = 142.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Words/Word3"]
+position = Vector2(174.5, 71)
+shape = SubResource("RectangleShape2D_bvp1c")
+
+[node name="Word4" type="CharacterBody2D" parent="Words"]
+position = Vector2(339, 714)
+script = ExtResource("2_m1stx")
+
+[node name="Label" type="Label" parent="Words/Word4"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 349.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 70
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Words/Word4"]
+offset_right = 349.0
+offset_bottom = 142.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Words/Word4"]
+position = Vector2(174.5, 71)
+shape = SubResource("RectangleShape2D_bvp1c")
+
+[node name="TrueWord" type="CharacterBody2D" parent="Words"]
+position = Vector2(339, 714)
+script = ExtResource("2_m1stx")
+
+[node name="Label" type="Label" parent="Words/TrueWord"]
+modulate = Color(0, 0, 0, 1)
+offset_right = 349.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 70
+text = "Word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Words/TrueWord"]
+offset_right = 349.0
+offset_bottom = 142.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Words/TrueWord"]
+position = Vector2(174.5, 71)
+shape = SubResource("RectangleShape2D_bvp1c")
+
+[node name="WordBacking" type="Sprite2D" parent="."]
+position = Vector2(512, 780)
+texture = ExtResource("2_mogi7")
+script = SubResource("GDScript_7qb05")
+
+[node name="Instructions" type="Label" parent="WordBacking"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -308.0
+offset_top = -80.0
+offset_right = 335.0
+offset_bottom = -51.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 40
+text = "Find a word that rhymes with"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChosenWord" type="Label" parent="WordBacking"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -308.0
+offset_top = -38.0
+offset_right = 335.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("3_4l6bk")
+theme_override_font_sizes/font_size = 120
+text = "This word"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3icww")
+
+[node name="Lose" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lvc3b")
+
+[connection signal="pressed" from="Words/Word/TextureButton" to="WordBacking" method="on_wrong_word"]
+[connection signal="pressed" from="Words/Word2/TextureButton" to="WordBacking" method="on_wrong_word"]
+[connection signal="pressed" from="Words/Word3/TextureButton" to="WordBacking" method="on_wrong_word"]
+[connection signal="pressed" from="Words/Word4/TextureButton" to="WordBacking" method="on_wrong_word"]
+[connection signal="pressed" from="Words/TrueWord/TextureButton" to="WordBacking" method="on_correct_word"]
+[connection signal="finished" from="Win" to="WordBacking" method="_on_audio_finished"]
+[connection signal="finished" from="Lose" to="WordBacking" method="_on_audio_finished"]
