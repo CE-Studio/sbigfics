@@ -1,4 +1,4 @@
-[gd_scene load_steps=149 format=3 uid="uid://bmq0uj0ecrl5b"]
+[gd_scene load_steps=150 format=3 uid="uid://bmq0uj0ecrl5b"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_xk1v2"]
 [ext_resource type="Shader" uid="uid://b31kqg66ubtrd" path="res://assets/sketchy.tres" id="2_d8yyp"]
@@ -310,6 +310,33 @@ tracks/8/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_o7y7f"]
+resource_name = "caught"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.0235617, 0.966196, 1.88636), Vector3(0.209, 1.301, 2.226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.296706, 2.05822e-07, 0), Vector3(0, -0.767945, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_fxvci"]
 resource_name = "panicc"
 length = 0.6
@@ -618,33 +645,6 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_o7y7f"]
-resource_name = "caught"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.0235617, 0.966196, 1.88636), Vector3(0.209, 1.301, 2.226)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.296706, 2.05822e-07, 0), Vector3(0, -0.767945, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yvf1v"]
@@ -1068,75 +1068,6 @@ subdivide_width = 2
 subdivide_height = 2
 subdivide_depth = 2
 
-[sub_resource type="Animation" id="Animation_gor3t"]
-resource_name = "shut"
-length = 25.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(2.3, 2.7, 14, 17.3),
-"transitions": PackedFloat32Array(1, 1, 2.82842, 2.07053),
-"update": 0,
-"values": [Vector3(0, 1.89014, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.89014, 0)]
-}
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("49_0hn4a")
-}],
-"times": PackedFloat32Array(2.7)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../hall:doorclosed")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(2.5, 16),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../StaticBody3D:input_ray_pickable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 24.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../StaticBody3D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_mouse_exited"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_8q1cg"]
 length = 0.001
 tracks/0/type = "value"
@@ -1175,12 +1106,131 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../armanims/mouse/MeshInstance3D2/arm4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.812, 0.328, 2.875)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../armanims/mouse/MeshInstance3D2/arm4:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.296706, -0.148352, 0.261799)]
+}
+
+[sub_resource type="Animation" id="Animation_gor3t"]
+resource_name = "shut"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.4, 1.8, 14, 17.3),
+"transitions": PackedFloat32Array(1, 1, 2.82842, 2.07053),
+"update": 0,
+"values": [Vector3(0, 1.89014, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.89014, 0)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("49_0hn4a")
+}],
+"times": PackedFloat32Array(1.8)
+}
+tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../hall:doorclosed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6, 16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../StaticBody3D:input_ray_pickable")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 24.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../StaticBody3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_mouse_exited"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../armanims/mouse/MeshInstance3D2/arm4:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 1.8, 2.2, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.812, 0.328, 2.875), Vector3(5.95533, 0.328, 4.03583), Vector3(5.95533, 0.328, 4.03583), Vector3(1.6526, 2.11793, 0.90722), Vector3(1.6526, 2.11793, 0.90722), Vector3(-1.812, 0.328, 2.875)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../armanims/mouse/MeshInstance3D2/arm4:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 1.8, 2.2, 3.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.296706, -0.148352, 0.261799), Vector3(-0.124833, -0.703147, -0.886057), Vector3(-0.124833, -0.703147, -0.886057), Vector3(-0.825541, -1.83783, 0.499164), Vector3(-0.825541, -1.83783, 0.499164), Vector3(-0.296706, -0.148352, 0.261799)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ih7e1"]
 _data = {
 "RESET": SubResource("Animation_8q1cg"),
 "shut": SubResource("Animation_gor3t")
 }
+
+[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_pg536"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vetf5"]
 atlas = ExtResource("48_gckew")
@@ -1549,7 +1599,7 @@ wait_time = 8.0
 one_shot = true
 
 [node name="door" type="Node3D" parent="."]
-transform = Transform3D(-0.313943, 0, 0.949442, 0, 1, 0, -0.949442, 0, -0.313943, 7.89745, 0, -1.6904)
+transform = Transform3D(-0.313944, 0, 0.949442, 0, 1, 0, -0.949442, 0, -0.313944, 7.89745, 0, -1.6904)
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="door"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41036, -0.443718, 0)
@@ -1563,6 +1613,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="door"]
+stream = SubResource("AudioStreamPolyphonic_pg536")
 
 [node name="cur" type="AnimatedSprite2D" parent="."]
 visible = false
