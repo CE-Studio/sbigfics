@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=70 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -27,7 +27,8 @@
 [ext_resource type="Texture2D" uid="uid://b7edpecwt846n" path="res://assets/TextSprites/Credits2.png" id="22_mkd72"]
 [ext_resource type="Texture2D" uid="uid://b3lim4byljv4n" path="res://assets/TextSprites/Credits3.png" id="23_vfodt"]
 [ext_resource type="Texture2D" uid="uid://cw1fsd3wogili" path="res://assets/darken.svg" id="27_2jivj"]
-[ext_resource type="AudioStream" uid="uid://2bxsmib8e14e" path="res://assets/sound/Music/title.ogg" id="28_awhgc"]
+[ext_resource type="AudioStream" uid="uid://bhadwegg80gl0" path="res://assets/sound/Music/title.ogg" id="28_awhgc"]
+[ext_resource type="Texture2D" uid="uid://cnd3j2x00gik2" path="res://assets/CreditPortraits.png" id="28_b3sm3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -212,9 +213,64 @@ shader_parameter/Tex1 = ExtResource("21_41gpk")
 shader_parameter/Tex2 = ExtResource("22_mkd72")
 shader_parameter/Tex3 = ExtResource("23_vfodt")
 
-<<<<<<< HEAD
-[node name="Node3D2" type="Node3D"]
-=======
+[sub_resource type="AtlasTexture" id="AtlasTexture_5khoe"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agcuu"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8p44"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ccfgx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5khoe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agcuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8p44")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6kcp"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8hnm"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcqa4"]
+atlas = ExtResource("28_b3sm3")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8jb07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6kcp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8hnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcqa4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="GDScript" id="GDScript_pkm6c"]
 script/source = "extends AudioStreamPlayer
 
@@ -224,7 +280,6 @@ func _on_finished():
 "
 
 [node name="Node3D" type="Node3D"]
->>>>>>> 193c5298cb5dce7b8a63edc46c73dc1c4d9fe0eb
 script = ExtResource("1_pdbem")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -250,7 +305,6 @@ surface_material_override/0 = ExtResource("1_lpgby")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.887834, 0.0948713, -0.450279, 0, 0.978517, 0.206168, 0.460165, 0.183043, -0.86876, -2.39188, 1.50988, -3.32205)
-current = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.244154, 0.0260896, -0.123827, 0, 0.269092, 0.0566962, 0.126545, 0.0503368, -0.238909, 0.25563, 0.663833, -2.36366)
@@ -484,6 +538,13 @@ of the code, refreshing
 Epsilon on Godot"
 horizontal_alignment = 2
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer/Label"]
+position = Vector2(16, -16)
+rotation = -0.18326
+scale = Vector2(0.705, 0.705)
+sprite_frames = SubResource("SpriteFrames_ccfgx")
+autoplay = "default"
+
 [node name="VSeparator" type="VSeparator" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
@@ -495,6 +556,13 @@ text = "- Epsilon -
 Most of the art, all of
 the sound, and about
 half of the minigames"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer/Label2"]
+position = Vector2(401, -6.00002)
+rotation = 0.366519
+scale = Vector2(0.705, 0.705)
+sprite_frames = SubResource("SpriteFrames_8jb07")
+autoplay = "default"
 
 [node name="Label3" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer"]
 layout_mode = 2
@@ -508,6 +576,20 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back to main menu"
+
+[node name="LinkButton" type="LinkButton" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.075
+offset_top = -26.065
+offset_right = 171.075
+offset_bottom = 13.935
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "GPLv3 CE Studio 2023"
+uri = "https://github.com/CE-Studio/sbigfics"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_awhgc")
