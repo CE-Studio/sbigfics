@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=61 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b7edpecwt846n" path="res://assets/TextSprites/Credits2.png" id="22_mkd72"]
 [ext_resource type="Texture2D" uid="uid://b3lim4byljv4n" path="res://assets/TextSprites/Credits3.png" id="23_vfodt"]
 [ext_resource type="Texture2D" uid="uid://cw1fsd3wogili" path="res://assets/darken.svg" id="27_2jivj"]
+[ext_resource type="AudioStream" uid="uid://2bxsmib8e14e" path="res://assets/sound/Music/title.ogg" id="28_awhgc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -211,7 +212,19 @@ shader_parameter/Tex1 = ExtResource("21_41gpk")
 shader_parameter/Tex2 = ExtResource("22_mkd72")
 shader_parameter/Tex3 = ExtResource("23_vfodt")
 
+<<<<<<< HEAD
 [node name="Node3D2" type="Node3D"]
+=======
+[sub_resource type="GDScript" id="GDScript_pkm6c"]
+script/source = "extends AudioStreamPlayer
+
+
+func _on_finished():
+    play()
+"
+
+[node name="Node3D" type="Node3D"]
+>>>>>>> 193c5298cb5dce7b8a63edc46c73dc1c4d9fe0eb
 script = ExtResource("1_pdbem")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -372,10 +385,138 @@ grow_vertical = 2
 texture = ExtResource("27_2jivj")
 
 [node name="OptionsControls" type="VBoxContainer" parent="Control/Options"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -98.5
+offset_right = 205.0
+offset_bottom = 98.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="Control/Options/OptionsControls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Music volume"
+
+[node name="MusSlider" type="HSlider" parent="Control/Options/OptionsControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+tick_count = 5
+ticks_on_borders = true
+
+[node name="SoundLabel" type="Label" parent="Control/Options/OptionsControls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sound volume"
+
+[node name="SfxSlider" type="HSlider" parent="Control/Options/OptionsControls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 0.5
+tick_count = 5
+ticks_on_borders = true
+
+[node name="Button" type="Button" parent="Control/Options/OptionsControls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="Credits" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="TextureRect" parent="Control/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_2jivj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Credits/Sprite2D"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Developed by Clarence and Epsilon of CE Studio"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "- Clarence -
+Game concept, most
+of the code, refreshing
+Epsilon on Godot"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "- Epsilon -
+Most of the art, all of
+the sound, and about
+half of the minigames"
+
+[node name="Label3" type="Label" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Character designs belong to both of us
+
+Also Stereo Madness by ForeverBound"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/Credits/Sprite2D/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Back to main menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_awhgc")
+autoplay = true
+script = SubResource("GDScript_pkm6c")
 
 [connection signal="pressed" from="Control/Buttons/TextureButton" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Control/Buttons/TextureButton2" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Control/Buttons/TextureButton3" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Control/Options/OptionsControls/Button" to="." method="_on_return_to_menu"]
+[connection signal="pressed" from="Control/Credits/Sprite2D/VBoxContainer/Button" to="." method="_on_return_to_menu"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
