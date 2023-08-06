@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ctwboxocf20p8"]
+[gd_scene load_steps=59 format=3 uid="uid://ctwboxocf20p8"]
 
 [ext_resource type="Material" uid="uid://bxbqlqyxp0yep" path="res://assets/laptopshader.tres" id="1_lpgby"]
 [ext_resource type="Script" path="res://title.gd" id="1_pdbem"]
@@ -18,7 +18,7 @@
 [ext_resource type="Script" path="res://simpleRetexture.gd" id="15_7e7si"]
 [ext_resource type="Texture2D" uid="uid://dscqwbnmpbic1" path="res://assets/TextSprites/Play1.png" id="15_g1ig0"]
 [ext_resource type="Texture2D" uid="uid://m03gxgjmsqx5" path="res://assets/TextSprites/Play2.png" id="16_445em"]
-[ext_resource type="Texture2D" uid="uid://trl4kghqu4y1" path="res://assets/Title2.png" id="16_f4o7e"]
+[ext_resource type="Texture2D" uid="uid://dxc04jyfiks5x" path="res://assets/Title2.png" id="16_f4o7e"]
 [ext_resource type="Texture2D" uid="uid://bwfmqwohdclxj" path="res://assets/TextSprites/Play3.png" id="17_5vb2f"]
 [ext_resource type="Texture2D" uid="uid://8v322qagfrlm" path="res://assets/TextSprites/Options1.png" id="18_fcgv7"]
 [ext_resource type="Texture2D" uid="uid://ecwadr8nghnc" path="res://assets/TextSprites/Options2.png" id="19_uk8ru"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dxmb4cefmsou5" path="res://assets/TextSprites/Credits1.png" id="21_41gpk"]
 [ext_resource type="Texture2D" uid="uid://b7edpecwt846n" path="res://assets/TextSprites/Credits2.png" id="22_mkd72"]
 [ext_resource type="Texture2D" uid="uid://b3lim4byljv4n" path="res://assets/TextSprites/Credits3.png" id="23_vfodt"]
+[ext_resource type="Texture2D" uid="uid://cw1fsd3wogili" path="res://assets/darken.svg" id="27_2jivj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7hcn0"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -285,7 +286,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="Buttons" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -300,36 +301,36 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.6, 0.6)
 
-[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Control/Buttons"]
 material = SubResource("ShaderMaterial_6uiht")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton"]
+[node name="TextureRect" type="TextureRect" parent="Control/Buttons/TextureButton"]
 material = SubResource("ShaderMaterial_pam3g")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("15_g1ig0")
 
-[node name="TextureButton2" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="Control/Buttons"]
 material = SubResource("ShaderMaterial_0gx3l")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton2"]
+[node name="TextureRect" type="TextureRect" parent="Control/Buttons/TextureButton2"]
 material = SubResource("ShaderMaterial_k5cgm")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("18_fcgv7")
 
-[node name="TextureButton3" type="TextureButton" parent="Control/VBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="Control/Buttons"]
 material = SubResource("ShaderMaterial_laqks")
 layout_mode = 2
 texture_normal = ExtResource("5_1c584")
 
-[node name="TextureRect" type="TextureRect" parent="Control/VBoxContainer/TextureButton3"]
+[node name="TextureRect" type="TextureRect" parent="Control/Buttons/TextureButton3"]
 material = SubResource("ShaderMaterial_4brn3")
 layout_mode = 0
 offset_right = 40.0
@@ -351,6 +352,29 @@ texture = ExtResource("13_m1mnh")
 script = ExtResource("15_7e7si")
 frames = Array[Texture2D]([ExtResource("13_m1mnh"), ExtResource("16_f4o7e")])
 
-[connection signal="pressed" from="Control/VBoxContainer/TextureButton" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/TextureButton2" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/TextureButton3" to="." method="_on_credits_pressed"]
+[node name="Options" type="Control" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="TextureRect" parent="Control/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_2jivj")
+
+[node name="OptionsControls" type="VBoxContainer" parent="Control/Options"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="pressed" from="Control/Buttons/TextureButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Control/Buttons/TextureButton2" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control/Buttons/TextureButton3" to="." method="_on_credits_pressed"]
