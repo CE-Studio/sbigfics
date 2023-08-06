@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c6pibdssjb5sh"]
+[gd_scene load_steps=24 format=3 uid="uid://c6pibdssjb5sh"]
 
 [ext_resource type="Script" path="res://laptop.gd" id="1_044e4"]
 [ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cii11e2hys4ko" path="res://assets/typing.svg" id="11_dgxmv"]
 [ext_resource type="Texture2D" uid="uid://cmpfnkr8cb1t6" path="res://assets/cur.svg" id="11_tfk6v"]
 [ext_resource type="Texture2D" uid="uid://bd4cr7dtoy13a" path="res://assets/loading.svg" id="11_yeqm3"]
+[ext_resource type="AudioStream" uid="uid://b33yk57cxmgh8" path="res://assets/sound/Speaking/speakRuby.wav" id="14_14r7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
 bg_color = Color(0.972549, 0.952941, 0.937255, 1)
@@ -172,3 +173,6 @@ text = "Waking from sleep..."
 position = Vector2(509, 516)
 texture = ExtResource("11_yeqm3")
 script = SubResource("GDScript_ljwk3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_14r7q")

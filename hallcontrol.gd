@@ -1,4 +1,5 @@
 extends Node3D
+class_name Hall
 
 
 @onready var chars:Array = get_children()

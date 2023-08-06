@@ -18,9 +18,14 @@ var _tt := 0
 var _typewait = false
 var _games:Array[PackedScene]
 
+var pick1 := ""
+var pick2 := ""
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+    Arms.playc = 1
+    Game.score = 0
     instance = self
     for i in DirAccess.get_files_at("res://assets/CharacterIcons/"):
         var j = i.split(".")
@@ -42,8 +47,8 @@ func _ready() -> void:
             _games.append(load("res://games/" + j[0] + ".tscn"))
 
 
-    desk.visible = false
-    _loadgame()
+    #desk.visible = false
+    #_loadgame()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +60,13 @@ func _process(delta: float) -> void:
 
 
 func button(name:String):
-    print(name)
+    if pick1 == "":
+        pick1 = name
+        $AudioStreamPlayer.play()
+    elif pick2 == "":
+        pick2 = name
+        $AudioStreamPlayer.play()
+        _loadgame()
 
 
 func _input(event: InputEvent) -> void:
@@ -86,6 +97,11 @@ func sleepytime():
 
 func caught():
     process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func win():
+    caught()
+    $"../../hall".process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func awaken():
