@@ -36,7 +36,6 @@ func _ready():
     var segmentCount = floor(Game.score * SCORE_SCALE) + MIN_SEGMENTS
     segmentCount = clampi(segmentCount, MIN_SEGMENTS, _enemyTower.get_child_count())
     for i in range(_enemyTower.get_child_count() - 1, segmentCount - 1, -1):
-        _enemyTower.get_child(i).queue_free()
         _enemyTower.remove_child(_enemyTower.get_child(i))
     _currentValue = randi_range(MIN_STARTING_VALUE, MAX_STARTING_VALUE)
     for i in _enemyTower.get_child_count():
@@ -80,8 +79,9 @@ func try_segment(segment:Node2D):
         if segment.value < _currentValue:
             _currentNextY -= Y_ADVANCE_SPACING
             segment.targetY = _currentNextY
-            segment.input_pickable = false
+            segment.button.disabled = true
             segment.reparent($\"..\")
+            _enemySegments.remove_at(_enemySegments.find(segment))
             _currentValue += segment.value
             segment.sprite.set_modulate(Color(0, 1, 1, 1))
             segment.text.text = \"\"
@@ -116,7 +116,7 @@ var isGaming := true
 
 func _process(delta: float) -> void:
     if isGaming:
-        scale.x -= (delta * 1.5)
+        scale.x -= (delta)
         if scale.x <= 0:
             Game.score -= 50
             $\"..\".endgame()
@@ -185,6 +185,12 @@ vertical_alignment = 1
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
+
 [node name="EnemySegment2" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 630)
 input_pickable = true
@@ -209,6 +215,12 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment2"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment2"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
 
 [node name="EnemySegment3" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 448)
@@ -235,6 +247,12 @@ vertical_alignment = 1
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment3"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
+
 [node name="EnemySegment4" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 266)
 input_pickable = true
@@ -259,6 +277,12 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment4"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment4"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
 
 [node name="EnemySegment5" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, 84)
@@ -285,6 +309,12 @@ vertical_alignment = 1
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment5"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
+
 [node name="EnemySegment6" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -98)
 input_pickable = true
@@ -309,6 +339,12 @@ vertical_alignment = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyTower/EnemySegment6"]
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
+
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment6"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
 
 [node name="EnemySegment7" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -280)
@@ -335,6 +371,12 @@ vertical_alignment = 1
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment7"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
+
 [node name="EnemySegment8" type="RigidBody2D" parent="EnemyTower"]
 position = Vector2(768, -462)
 input_pickable = true
@@ -360,6 +402,12 @@ vertical_alignment = 1
 position = Vector2(0, 14.5)
 shape = SubResource("RectangleShape2D_1aspk")
 
+[node name="TextureButton" type="TextureButton" parent="EnemyTower/EnemySegment8"]
+offset_left = -157.0
+offset_top = -76.0
+offset_right = 157.0
+offset_bottom = 105.0
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(0, 110)
 scale = Vector2(10, 20)
@@ -376,11 +424,11 @@ stream = ExtResource("6_y5c38")
 [node name="Fail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8y7di")
 
-[connection signal="input_event" from="EnemyTower/EnemySegment" to="EnemyTower/EnemySegment" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment2" to="EnemyTower/EnemySegment2" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment3" to="EnemyTower/EnemySegment3" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment4" to="EnemyTower/EnemySegment4" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment5" to="EnemyTower/EnemySegment5" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment6" to="EnemyTower/EnemySegment6" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment7" to="EnemyTower/EnemySegment7" method="_on_input_event"]
-[connection signal="input_event" from="EnemyTower/EnemySegment8" to="EnemyTower/EnemySegment8" method="_on_input_event"]
+[connection signal="pressed" from="EnemyTower/EnemySegment/TextureButton" to="EnemyTower/EnemySegment" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment2/TextureButton" to="EnemyTower/EnemySegment2" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment3/TextureButton" to="EnemyTower/EnemySegment3" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment4/TextureButton" to="EnemyTower/EnemySegment4" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment5/TextureButton" to="EnemyTower/EnemySegment5" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment6/TextureButton" to="EnemyTower/EnemySegment6" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment7/TextureButton" to="EnemyTower/EnemySegment7" method="_on_pressed"]
+[connection signal="pressed" from="EnemyTower/EnemySegment8/TextureButton" to="EnemyTower/EnemySegment8" method="_on_pressed"]
