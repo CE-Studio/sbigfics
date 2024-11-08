@@ -1232,6 +1232,42 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector3(-0.296706, -0.148352, 0.261799)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ProgressBar:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ProgressBar:value")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
+"update": 0,
+"values": [25.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ProgressBar:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat64Array(0),
+"transitions": PackedFloat64Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_gor3t"]
 resource_name = "shut"
@@ -1324,6 +1360,42 @@ tracks/6/keys = {
 "transitions": PackedFloat64Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.296706, -0.148352, 0.261799), Vector3(-0.124833, -0.703147, -0.886057), Vector3(-0.124833, -0.703147, -0.886057), Vector3(-0.825541, -1.83783, 0.499164), Vector3(-0.825541, -1.83783, 0.499164), Vector3(-0.296706, -0.148352, 0.261799)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ProgressBar:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat64Array(0, 0.5, 10, 14, 24.5, 25),
+"transitions": PackedFloat64Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 1), Color(1, 0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("ProgressBar:value")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat64Array(0, 25),
+"transitions": PackedFloat64Array(1, 1),
+"update": 0,
+"values": [25.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("ProgressBar:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat64Array(0, 12.2, 12.4, 12.6, 12.8, 13, 13.2, 13.4, 13.6, 13.8, 14),
+"transitions": PackedFloat64Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false, true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ih7e1"]
@@ -1984,6 +2056,20 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="door"]
+
+[node name="ProgressBar" type="ProgressBar" parent="door"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -259.0
+offset_top = 7.0
+offset_right = -6.0
+offset_bottom = 34.0
+grow_horizontal = 0
+max_value = 25.0
+value = 25.0
+show_percentage = false
 
 [node name="cur" type="AnimatedSprite2D" parent="."]
 visible = false
