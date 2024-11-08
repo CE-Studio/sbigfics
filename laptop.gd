@@ -24,94 +24,93 @@ var pick2 := ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-    Arms.playc = 1
-    Game.score = 0
-    instance = self
-    for i in DirAccess.get_files_at("res://assets/CharacterIcons/"):
-        var j = i.split(".")
-        if j[-1] == "import":
-            var tex = load("res://assets/CharacterIcons/" + j[0] + ".png")
-            if j[0] == "Kevin 34":
-                j[0] = "Kevin, 34"
-            var h:IPButton = _bbase.instantiate()
-            h.ico = tex
-            h.title = j[0]
-            counts[j[0]] = randi_range(1, 300)
-            h.count = counts[j[0]]
-            h.cb = button
+	Arms.playc = 1
+	Game.score = 0
+	instance = self
+	for i in DirAccess.get_files_at("res://assets/CharacterIcons/"):
+		var j = i.split(".")
+		if j[-1] == "import":
+			var tex = load("res://assets/CharacterIcons/" + j[0] + ".png")
+			if j[0] == "Kevin 34":
+				j[0] = "Kevin, 34"
+			var h:IPButton = _bbase.instantiate()
+			h.ico = tex
+			h.title = j[0]
+			counts[j[0]] = randi_range(1, 300)
+			h.count = counts[j[0]]
+			h.cb = button
 
-            grid.add_child(h)
-    for i in DirAccess.get_files_at("res://games/"):
-        var j = i.split(".")
-        if (j[-1] == "tscn") or (j[-1] == "remap"):
-            _games.append(load("res://games/" + j[0] + ".tscn"))
+			grid.add_child(h)
+	for i in DirAccess.get_files_at("res://games/"):
+		var j = i.split(".")
+		if (j[-1] == "tscn") or (j[-1] == "remap"):
+			_games.append(load("res://games/" + j[0] + ".tscn"))
 
 
-    #desk.visible = false
-    #_loadgame()
+	#desk.visible = false
+	#_loadgame()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-    if _typewait and (Arms.playc <= 0):
-        _typewait = false
-        $Sprite2D.visible = false
-        _loadgame()
+	if _typewait and (Arms.playc <= 0):
+		_typewait = false
+		$Sprite2D.visible = false
+		_loadgame()
 
 
 func button(name:String):
-    if pick1 == "":
-        pick1 = name
-        $AudioStreamPlayer.play()
-    elif pick2 == "":
-        pick2 = name
-        $AudioStreamPlayer.play()
-        _loadgame()
+	if pick1 == "":
+		pick1 = name
+		$AudioStreamPlayer.play()
+	elif pick2 == "":
+		pick2 = name
+		$AudioStreamPlayer.play()
+		_loadgame()
 
 
 func _input(event: InputEvent) -> void:
-    if event is InputEventMouseMotion:
-        cur.position = event.position
+	if event is InputEventMouseMotion:
+		cur.position = event.position
 
 
 func nextgame():
-    Score.score = round(Game.score)
-    for i in content.get_children():
-        i.queue_free()
-    Arms.playc = 5
-    $Sprite2D.visible = true
-    _typewait = true
+	Score.score = round(Game.score)
+	for i in content.get_children():
+		i.queue_free()
+	Arms.playc = 5
+	$Sprite2D.visible = true
+	_typewait = true
 
 
 func ticktype() -> void:
-    _tt += 1
-    $Sprite2D.frame = _tt % 3
+	_tt += 1
+	$Sprite2D.frame = _tt % 3
 
 
 func sleepytime():
-    content.process_mode = Node.PROCESS_MODE_DISABLED
-    desk.visible = false
-    sleepscreen.visible = true
-    awake = false
+	content.process_mode = Node.PROCESS_MODE_DISABLED
+	desk.visible = false
+	sleepscreen.visible = true
+	awake = false
 
 
 func caught():
-    process_mode = Node.PROCESS_MODE_DISABLED
+	process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func win():
-    caught()
-    $"../../hall".process_mode = Node.PROCESS_MODE_DISABLED
+	caught()
+	$"../../hall".process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func awaken():
-    content.process_mode = Node.PROCESS_MODE_INHERIT
-    desk.visible = true
-    sleepscreen.visible = false
-    awake = true
+	content.process_mode = Node.PROCESS_MODE_INHERIT
+	desk.visible = true
+	sleepscreen.visible = false
+	awake = true
 
 
 func _loadgame():
-    _games.shuffle()
-    content.add_child(_games[0].instantiate())
-    #content.add_child(load("res://games/towers.tscn").instantiate())
+	content.add_child(_games.pick_random().instantiate())
+	#content.add_child(load("res://games/towers.tscn").instantiate())

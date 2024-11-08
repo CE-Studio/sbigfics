@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://c6pibdssjb5sh"]
 
 [ext_resource type="Script" path="res://laptop.gd" id="1_044e4"]
-[ext_resource type="Texture2D" uid="uid://dbdvi1e6sdm6l" path="res://assets/titlebar.svg" id="1_w7f12"]
+[ext_resource type="Texture2D" uid="uid://bdlma33ibtwnq" path="res://assets/titlebar.png" id="2_lqof3"]
 [ext_resource type="Texture2D" uid="uid://g2hvjbtta66l" path="res://assets/scrollsprites/up.svg" id="2_pkry7"]
 [ext_resource type="Texture2D" uid="uid://bb1kg7qq7bahx" path="res://assets/scrollsprites/uph.svg" id="3_mjbms"]
 [ext_resource type="Texture2D" uid="uid://dwjq2a6u5dhf4" path="res://assets/scrollsprites/upp.svg" id="4_i1rsf"]
@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://b5ldvjn46qreu" path="res://assets/scrollsprites/downp.svg" id="7_5lvto"]
 [ext_resource type="Texture2D" uid="uid://bf1f7ep8mckcx" path="res://assets/scrollsprites/grab.svg" id="8_0akbg"]
 [ext_resource type="Texture2D" uid="uid://cqpc7htpa4tt6" path="res://assets/scrollsprites/grabh.svg" id="9_vb0q7"]
-[ext_resource type="Texture2D" uid="uid://cii11e2hys4ko" path="res://assets/typing.svg" id="11_dgxmv"]
+[ext_resource type="Texture2D" uid="uid://dp0ilt5wjaysn" path="res://assets/typing.png" id="11_1xbao"]
 [ext_resource type="Texture2D" uid="uid://cmpfnkr8cb1t6" path="res://assets/cur.svg" id="11_tfk6v"]
 [ext_resource type="Texture2D" uid="uid://bd4cr7dtoy13a" path="res://assets/loading.svg" id="11_yeqm3"]
-[ext_resource type="AudioStream" uid="uid://b33yk57cxmgh8" path="res://assets/sound/Speaking/speakRuby.wav" id="14_14r7q"]
+[ext_resource type="AudioStream" uid="uid://d1gw714ksln1r" path="res://assets/sound/Speaking/speakRuby.wav" id="14_14r7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imai1"]
 bg_color = Color(0.972549, 0.952941, 0.937255, 1)
@@ -108,7 +108,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_imai1")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_w7f12")
+texture = ExtResource("2_lqof3")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="desktop"]
 layout_mode = 1
@@ -137,7 +137,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.29475)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 110)
-texture = ExtResource("11_dgxmv")
+texture = ExtResource("11_1xbao")
 centered = false
 hframes = 3
 
